@@ -48,6 +48,7 @@
     <Compile Include="Program.fs" />
     <None Include="packages.config" />
     <None Include="Class Examples.fsx" />
+    <None Include="Problem Set 1.fsx" />
   </ItemGroup>
   <Import Project="$(FSharpTargetsPath)" />
 </Project>
