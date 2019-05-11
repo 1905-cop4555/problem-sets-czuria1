@@ -3,4 +3,4 @@
         then 1.0
         else m * power (m, n-1);;
 
-power (2.0, 3.0);;
+power (2.0, 3);;
