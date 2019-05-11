@@ -17,8 +17,9 @@
 //sum (9);;
 
 let rec mult (m, n) = 
-    if n = 0
-        then 0
-        else m * mult(n-1);
+    if n = 1
+        then m
+        else m + mult(m, n-1);
 
+// Expected output = 5
 mult (5, 1);;
