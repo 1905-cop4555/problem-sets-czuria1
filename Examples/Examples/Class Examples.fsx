@@ -23,3 +23,9 @@ let rec mult (m, n) =
 
 // Expected output = 5
 mult (5, 1);;
+
+// Expected output = 20
+mult (4, 5);;
+
+// Expected output = -3
+mult (3, -1);;
