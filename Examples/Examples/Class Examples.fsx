@@ -5,13 +5,20 @@
 
 //power (2.0, 3);;
 
-let rec sum (n) = 
+//let rec sum (n) = 
+//    if n = 0
+//        then 0
+//        else n + sum(n-1);
+
+//// Expected output = 6
+//sum (3);;
+
+//// Expected output = 45
+//sum (9);;
+
+let rec mult (m, n) = 
     if n = 0
         then 0
-        else n + sum(n-1);
+        else m * mult(n-1);
 
-// Expected output = 6
-sum (3);;
-
-// Expected output = 45
-sum (9);;
+mult (5, 1);;
