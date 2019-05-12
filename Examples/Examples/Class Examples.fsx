@@ -30,20 +30,35 @@
 //List.reduce (+) [1..5];;
 //List.reduce (-) [1..5];;
 
-let list = 1::2::3::[]
+//let list = 1::2::3::[]
 
 // a list of char is allowed
-let list2 = ['a'..'z']
+//let list2 = ['a'..'z']
 
 // a list of tuples based on the element's index
-let list3 = List.init 3 (fun n -> (n, n+n))
+//let list3 = List.init 3 (fun n -> (n, n+n))
 
-let list4 = list.Length
-let list5 = list.Head
-let list6 = list.Tail
+//let list4 = list.Length
+//let list5 = list.Head
+//let list6 = list.Tail
 
 // using the @ sign to append lists
-let list7 = ['a';'b';'c']
-let list8 = ['d';'e';'f']
-let list9 = list7 @ list8
+//let list7 = ['a';'b';'c']
+//let list8 = ['d';'e';'f']
+//let list9 = list7 @ list8
 
+//printfn "The appended list: %A" list9
+
+let rec prod ms = 
+    match ms with
+    | [] -> 1
+    | n::ms -> n * prod ms
+
+prod [2;3]
+
+let rec sum ms = 
+    match ms with
+    | [] -> 0
+    | n::ms -> n + sum ms
+
+sum [1..5];;
