@@ -49,16 +49,25 @@
 
 //printfn "The appended list: %A" list9
 
-let rec prod ms = 
-    match ms with
-    | [] -> 1
-    | n::ms -> n * prod ms
+//let rec prod ms = 
+//    match ms with
+//    | [] -> 1
+//    | n::ms -> n * prod ms
 
-prod [2;3]
+//prod [2;3]
 
-let rec sum ms = 
-    match ms with
-    | [] -> 0
-    | n::ms -> n + sum ms
+//let rec sum ms = 
+//    match ms with
+//    | [] -> 0
+//    | n::ms -> n + sum ms
 
-sum [1..5];;
+//sum [1..5];;
+
+let foo = [[1;2;3]]
+let baz = [[4;5;6]]
+
+List.head foo
+
+List.map List.tail foo @ baz
+
+//List.map List.head foo @ baz

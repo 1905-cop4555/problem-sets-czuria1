@@ -80,11 +80,11 @@ let result = comparison equal 1 2;;
     (List.map (List.head foo)) @ baz <==
 *)
 
-let foo = [[1;2;3]]
-let baz = [4;5;6]
+//let foo = [[1;2;3]]
+//let baz = [4;5;6]
 
 // the following requires an input of a list list / why?
-List.map List.head foo @ baz
+//List.map List.head foo @ baz
 
 (*
 7. How does F# interpret the type int * bool -> string list? Select one:
@@ -93,3 +93,21 @@ List.map List.head foo @ baz
     int * (bool -> (string list))
     (int * bool) -> (string list)
 *)
+
+(*
+8.Let F# function foo be defined as follows:
+    let rec foo = function
+            | (xs, [])    -> xs
+            | (xs, y::ys) -> foo (xs@[y], ys)
+
+    If foo is supposed to append its two list parameters, which of the following is true? Select one:
+
+    foo fails Step 1 of the Checklist for Programming with Recursion.
+    foo fails Step 2 of the Checklist for Programming with Recursion.
+    foo fails Step 3 of the Checklist for Programming with Recursion.
+    foo satisfies all three steps of the Checklist for Programming with Recursion.
+*)
+
+let rec foo = function
+            | (xs, [])    -> xs
+            | (xs, y::ys) -> foo (xs@[y], ys)
