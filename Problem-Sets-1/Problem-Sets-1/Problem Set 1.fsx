@@ -46,10 +46,10 @@ let result = comparison equal 1 2;;
 
 (*
 4. Which of the following statements about F# lists is not true? Select one:
-    They are immutable.
-    Their built-in functions are polymorphic.
-    They can be of any length.
-    They can be heterogeneous.
+    They are immutable. (TRUE)
+    Their built-in functions are polymorphic. (TRUE)
+    They can be of any length. (TRUE)
+    They can be heterogeneous. (FALSE) <==
 *)
 
 (*
