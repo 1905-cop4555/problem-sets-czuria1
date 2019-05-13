@@ -63,11 +63,21 @@
 
 //sum [1..5];;
 
-let foo = [[1;2;3]]
-let baz = [[4;5;6]]
+//let foo = [[1;2;3]]
+//let baz = [[4;5;6]]
 
-List.head foo
+//List.head foo
 
-List.map List.tail foo @ baz
+//List.map List.tail foo @ baz
 
 //List.map List.head foo @ baz
+
+// class example pattern matching using function keyword
+let rec prod = function
+    | [] -> 1
+    | n::ns -> n * prod ns
+
+prod []
+prod [1;2]
+prod [2;4;6]
+
