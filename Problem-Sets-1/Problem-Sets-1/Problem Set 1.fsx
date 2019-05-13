@@ -111,3 +111,5 @@ let result = comparison equal 1 2;;
 let rec foo = function
             | (xs, [])    -> xs
             | (xs, y::ys) -> foo (xs@[y], ys)
+
+foo ([1], [2;3])
