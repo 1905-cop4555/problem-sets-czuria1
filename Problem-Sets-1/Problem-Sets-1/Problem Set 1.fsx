@@ -90,17 +90,16 @@ let result = comparison equal 1 2;;
  Precedence of type constructors:
     1) list
     2) *
-    3) ->
+    3) -> (this associates to the right)
 
     int * bool -> (string list)
     (int * bool) -> (string list)
-    ((int * bool) -> (string list))
 
 7. How does F# interpret the type int * bool -> string list? Select one:
     (int * (bool -> string)) list
     ((int * bool) -> string) list
     int * (bool -> (string list))
-    (int * bool) -> (string list)
+    (int * bool) -> (string list) <==
 *)
 
 (*
