@@ -51,3 +51,45 @@ let result = comparison equal 1 2;;
     They can be of any length.
     They can be heterogeneous.
 *)
+
+(*
+5. Which of the following F# expressions evaluates to [1; 2; 3]? Select one:
+    1::2::3::[] <==
+    1@2@3@[]
+    [1; 2; 3]::[]
+    ((1::2)::3)::[]
+*)
+
+// appends using cons
+1::2::3::[]
+
+// the following expects a list
+//1@2@3@[]
+
+// the following appends a list within the empty list
+[1; 2; 3]::[]
+
+// the following is not a list so there is an error
+//((1::2)::3)::[]
+
+(*
+6. How does F# interpret the expression List.map List.head foo @ baz? Select one:
+    (List.map List.head) (foo @ baz)
+    ((List.map List.head) foo) @ baz
+    List.map (List.head (foo @ baz))
+    (List.map (List.head foo)) @ baz <==
+*)
+
+let foo = [[1;2;3]]
+let baz = [4;5;6]
+
+// the following requires an input of a list list / why?
+List.map List.head foo @ baz
+
+(*
+7. How does F# interpret the type int * bool -> string list? Select one:
+    (int * (bool -> string)) list
+    ((int * bool) -> string) list
+    int * (bool -> (string list))
+    (int * bool) -> (string list)
+*)
