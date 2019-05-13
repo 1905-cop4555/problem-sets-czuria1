@@ -81,3 +81,17 @@ prod []
 prod [1;2]
 prod [2;4;6]
 
+// class example pattern matching using function keyword
+// which returns a list of numbers counting down from input number
+let rec downFrom = function
+    | 0 -> []
+    | n -> n :: downFrom(n-1)
+
+downFrom 6
+
+// question from problem set
+// input is a tuple of a list and a list
+let rec foo = function
+    | (xs, [])    -> xs
+
+foo ([1], [])
