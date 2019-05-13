@@ -126,7 +126,34 @@ let result = comparison equal 1 2;;
 (*
 9. Which of the following is the type that F# infers for (fun f -> f 17)? Select one:
     ('a -> 'b) -> 'b
-    (int -> int) -> int
-    (int -> 'a) -> 'a
+    (int -> int) -> int 
+    (int -> 'a) -> 'a <==
     ('a -> 'a) -> 'a
 *)
+
+// input type is an int and function then determines the type returned
+let infer f =
+    f 17
+
+(*
+10. Which of the following has type int -> int list? Select one:
+    (@) [5]
+    [fun x -> x+1]
+    fun x -> 5::x
+    fun x -> x::[5] <==
+*)
+
+
+// returns an int list, but requires an int list to append to
+(@) [5]
+
+
+// returns a  tuple
+[fun x -> x+1]
+
+// this one requires a list
+fun x -> 5::x
+
+// this one only requires an int as input type to append
+// to the int list
+fun x -> x::[5]
