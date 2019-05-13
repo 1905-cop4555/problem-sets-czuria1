@@ -157,3 +157,14 @@ fun x -> 5::x
 // this one only requires an int as input type to append
 // to the int list
 fun x -> x::[5]
+
+(*
+17. Write an F# function revlists xs that takes a list of lists xs and reverses all the sub-lists:
+  > revlists [[0;1;1];[3;2];[];[5]];;
+        val it : int list list = [[1; 1; 0]; [2; 3]; []; [5]]
+*)
+
+let revlists list = function
+    | list -> []
+
+revlists [[0;1;1];[3;2];[];[5]];;
