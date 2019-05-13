@@ -87,6 +87,15 @@ let result = comparison equal 1 2;;
 //List.map List.head foo @ baz
 
 (*
+ Precedence of type constructors:
+    1) list
+    2) *
+    3) ->
+
+    int * bool -> (string list)
+    (int * bool) -> (string list)
+    ((int * bool) -> (string list))
+
 7. How does F# interpret the type int * bool -> string list? Select one:
     (int * (bool -> string)) list
     ((int * bool) -> string) list
@@ -102,14 +111,23 @@ let result = comparison equal 1 2;;
 
     If foo is supposed to append its two list parameters, which of the following is true? Select one:
 
-    foo fails Step 1 of the Checklist for Programming with Recursion.
+    foo fails Step 1 of the Checklist for Programming with Recursion. <== ??
     foo fails Step 2 of the Checklist for Programming with Recursion.
     foo fails Step 3 of the Checklist for Programming with Recursion.
     foo satisfies all three steps of the Checklist for Programming with Recursion.
 *)
 
-let rec foo = function
-            | (xs, [])    -> xs
-            | (xs, y::ys) -> foo (xs@[y], ys)
+// function fails, why?
+//let rec foo = function
+//            | (xs, [])    -> xs
+//            | (xs, y::ys) -> foo (xs@[y], ys)
 
-foo ([1], [2;3])
+//foo ([1], [2;3])
+
+(*
+9. Which of the following is the type that F# infers for (fun f -> f 17)? Select one:
+    ('a -> 'b) -> 'b
+    (int -> int) -> int
+    (int -> 'a) -> 'a
+    ('a -> 'a) -> 'a
+*)
