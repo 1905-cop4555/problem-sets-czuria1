@@ -245,7 +245,6 @@ let gencut(n, right) =
         | n, left, [] -> left, []
         | n, left, right::rtail -> gencutHelper(n-1, right::left, rtail)
     gencutHelper(n, [], right)
-gencut(n, right)
 
 gencut(2, [1;3;4;2;7;0;9]);;
 
