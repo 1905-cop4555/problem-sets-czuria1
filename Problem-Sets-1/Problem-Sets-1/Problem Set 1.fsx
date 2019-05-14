@@ -179,8 +179,11 @@ fun x -> x::[5]
     int list -> int -> int list
     int list -> int list
     Type error.
-    int list -> (int -> int) list 
+    int list -> (int -> int) list <==
 *)
+
+fun xs -> List.map (+) xs
+fun a -> List.map (*) [1;2;3] // a -> (int -> int) list
 
 (*
 17. Write an F# function revlists xs that takes a list of lists xs and reverses all the sub-lists:
@@ -255,7 +258,8 @@ let cut list =
 cut [1;2;3;4;5;6];;
 
 (*
-20. Write an F# function shuffle xs that takes an even-length list, cuts it into two equal-sized pieces, and then interleaves the pieces:
+20. Write an F# function shuffle xs that takes an even-length list, cuts it into two equal-sized pieces, and then 
+    interleaves the pieces:
   > shuffle [1;2;3;4;5;6;7;8];;
         val it : int list = [1; 5; 2; 6; 3; 7; 4; 8]
     (On a deck of cards, this is called a perfect out-shuffle.)
@@ -284,3 +288,16 @@ let shuffle list =
     interleave2 halves
 
 shuffle [1;2;3;4;5;6;7;8];;
+
+(*
+21. Write an F# function countshuffles n that counts how many calls to shuffle on a deck of n distinct "cards" it takes 
+    to put the deck back into its original order:
+  > countshuffles 4;;
+        val it : int = 2
+    (To see that this result is correct, note that shuffle [1;2;3;4] = [1;3;2;4], and shuffle [1;3;2;4] = [1;2;3;4].) 
+    What is countshuffles 52?
+    Hint: Define an auxiliary function countaux(deck, target) that takes two lists and returns the number of shuffles 
+    it takes to make deck equal to target.
+*)
+
+//let countaux(deck, target) =
