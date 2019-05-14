@@ -172,7 +172,7 @@ let revlists list = List.map List.rev list
 revlists [[0;1;1];[3;2];[];[5]];;
 
 (*
-18.Write an F# function interleave(xs,ys) that interleaves two lists:
+18. Write an F# function interleave(xs,ys) that interleaves two lists:
   > interleave ([1;2;3],[4;5;6]);;
         val it : int list = [1; 4; 2; 5; 3; 6]
     Assume that the two lists have the same length.
@@ -183,5 +183,22 @@ let rec interleave = function
     | ([], ys) -> ys
     | (x::xs, y::ys) -> x::y::interleave(xs, ys)
 
- 
+
 interleave ([1;2;3],[4;5;6]);;
+
+(*
+19. Write an F# function cut xs that cuts a list into two equal parts:
+  > cut [1;2;3;4;5;6];;
+        val it : int list * int list = ([1; 2; 3], [4; 5; 6])
+Assume that the list has even length.
+To implement cut, first define an auxiliary function gencut(n, xs) that cuts xs into two pieces, where n gives the 
+size of the first piece:
+
+  > gencut(2, [1;3;4;2;7;0;9]);;
+        val it : int list * int list = ([1; 3], [4; 2; 7; 0; 9])
+*)
+
+let rec gencut = function
+    | (n, []) -> []
+    | (0, xs) -> xs
+    | (n, xs) -> 
