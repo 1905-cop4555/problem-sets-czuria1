@@ -159,6 +159,30 @@ fun x -> 5::x
 fun x -> x::[5]
 
 (*
+11. What type does F# infer for the expression (3, [], true) ? Select one:
+    int * 'a list * bool <==
+    int * 'a * bool
+    int * int list * bool
+    Type error.
+*)
+
+(*
+12. What type does F# infer for the expression fun x y -> x+y+"." ? Select one:
+    string -> string -> string <==
+    string * string -> string
+    Type error.
+    int -> int -> string
+*)
+
+(*
+13. What type does F# infer for the expression fun xs -> List.map (+) xs ? Select one:
+    int list -> int -> int list
+    int list -> int list
+    Type error.
+    int list -> (int -> int) list 
+*)
+
+(*
 17. Write an F# function revlists xs that takes a list of lists xs and reverses all the sub-lists:
   > revlists [[0;1;1];[3;2];[];[5]];;
         val it : int list list = [[1; 1; 0]; [2; 3]; []; [5]]
@@ -209,22 +233,20 @@ size of the first piece:
     //| 0, xs -> xs
     //| n, x::xs -> x::gencut(n-1,xs)
 
-let rec gencut = function
-    | n, [] -> [], []
-    | 0, xs -> [], xs
-    | n, x::xs -> [x], gencut(n-1, xs)
+//let rec gencut = function
+    //| n, [] -> [], []
+    //| 0, xs -> [], xs
+    //| n, x::xs -> [x], gencut(n-1, xs)
+
+let gencut (n, right) =
+    let rec gencutHelper = function
+        | 0, left, right -> List.rev left, right
+        | n, left, [] -> left, []
+        | n, left, right::rtail -> gencutHelper(n-1, right::left, rtail)
+    gencutHelper(n, [], right)
+gencut(n, right)
 
 gencut(2, [1;3;4;2;7;0;9]);;
-
-List.tail [1;3;4;2;7;0;9]
-
-let rec cut = function
-    | [] -> [],[]
-    | [x] -> [x], []
-    | x::xs -> [x], xs
-    
-
-cut [1;2;3;4;5;6];;
 
 (*
 20. Write an F# function shuffle xs that takes an even-length list, cuts it into two equal-sized pieces, and then interleaves the pieces:
