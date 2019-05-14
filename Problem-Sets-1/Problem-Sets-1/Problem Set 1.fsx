@@ -186,6 +186,30 @@ fun xs -> List.map (+) xs
 fun a -> List.map (*) [1;2;3] // a -> (int -> int) list
 
 (*
+14. Which of the following does F# infer to have type string -> string -> string ? Select one:
+    fun x -> fun y -> x y "."
+    fun x y -> String.length x * String.length y
+    fun (x, y) -> x + y + "."
+    (+)
+     
+    fun x y -> x + " " + y <== 
+*)
+
+// the following infers string -> string -> string because of + " "
+fun x y -> x + " " + y
+
+(*
+15. Which of the following does F# infer to have type (string -> string) -> string ? Select one:
+    fun f -> String.length (f "cat")
+    fun x y -> x + " " + y
+    fun f -> f (f "cat") <=
+    fun f -> f "cat"
+*)
+
+// the following infers (string -> string) -> string because of precedence
+fun f -> f (f "cat")
+
+(*
 17. Write an F# function revlists xs that takes a list of lists xs and reverses all the sub-lists:
   > revlists [[0;1;1];[3;2];[];[5]];;
         val it : int list list = [[1; 1; 0]; [2; 3]; []; [5]]
