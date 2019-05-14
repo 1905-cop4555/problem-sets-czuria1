@@ -238,8 +238,9 @@ size of the first piece:
     //| 0, xs -> [], xs
     //| n, x::xs -> [x], gencut(n-1, xs)
 
-let gencut (n, right) =
-    let rec gencutHelper = function
+let gencut(n, right) =
+    let rec gencutHelper (n, left, right) = 
+        match n, left, right with 
         | 0, left, right -> List.rev left, right
         | n, left, [] -> left, []
         | n, left, right::rtail -> gencutHelper(n-1, right::left, rtail)
