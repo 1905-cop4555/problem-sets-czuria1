@@ -205,6 +205,8 @@ size of the first piece:
 *)
 
 let rec gencut = function
-    | (n, []) -> []
-    | (0, xs) -> xs
-    | (n, xs) -> 
+    | n, [] -> []
+    | 0, xs -> xs
+    | n, x::xs -> x::gencut(n-1,xs)
+
+gencut(2, [1;3;4;2;7;0;9]);;
