@@ -209,12 +209,22 @@ size of the first piece:
     //| 0, xs -> xs
     //| n, x::xs -> x::gencut(n-1,xs)
 
-let rec gencut (n,xs) = function
+let rec gencut = function
     | n, [] -> [], []
-    | 0, xs -> [],xs
-    | n, x::xs -> x, []::gencut(n-1, xs)
+    | 0, xs -> [], xs
+    | n, x::xs -> [x], gencut(n-1, xs)
 
 gencut(2, [1;3;4;2;7;0;9]);;
+
+List.tail [1;3;4;2;7;0;9]
+
+let rec cut = function
+    | [] -> [],[]
+    | [x] -> [x], []
+    | x::xs -> [x], xs
+    
+
+cut [1;2;3;4;5;6];;
 
 (*
 20. Write an F# function shuffle xs that takes an even-length list, cuts it into two equal-sized pieces, and then interleaves the pieces:
