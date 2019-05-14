@@ -260,3 +260,27 @@ cut [1;2;3;4;5;6];;
         val it : int list = [1; 5; 2; 6; 3; 7; 4; 8]
     (On a deck of cards, this is called a perfect out-shuffle.)
 *)
+
+let rec interleave2 = function
+    | [], [] -> []
+    | xs, [] -> xs
+    | [], ys -> ys
+    | x::xs, y::ys -> x::y::interleave(xs,ys)
+
+let gencut2(n, right) =
+    let rec gencutHelper (n, left, right) = 
+        match n, left, right with 
+        | 0, left, right -> List.rev left, right
+        | n, left, [] -> left, []
+        | n, left, right::rtail -> gencutHelper(n-1, right::left, rtail)
+    gencutHelper(n, [], right)
+
+let cut2 list = 
+    let n = List.length list / 2
+    gencut2(n, list)
+
+let shuffle list =
+    let halves = cut2 list
+    interleave2 halves
+
+shuffle [1;2;3;4;5;6;7;8];;
