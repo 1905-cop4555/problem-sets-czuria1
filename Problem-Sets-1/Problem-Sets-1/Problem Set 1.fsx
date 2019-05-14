@@ -164,7 +164,9 @@ fun x -> x::[5]
         val it : int list list = [[1; 1; 0]; [2; 3]; []; [5]]
 *)
 
-let revlists list = function
-    | list -> []
+//let revlists = fun list -> List.map List.rev list
+
+// another way to write the same function 
+let revlists list = List.map List.rev list 
 
 revlists [[0;1;1];[3;2];[];[5]];;
