@@ -210,3 +210,10 @@ let rec gencut = function
     | n, x::xs -> x::gencut(n-1,xs)
 
 gencut(2, [1;3;4;2;7;0;9]);;
+
+(*
+20. Write an F# function shuffle xs that takes an even-length list, cuts it into two equal-sized pieces, and then interleaves the pieces:
+  > shuffle [1;2;3;4;5;6;7;8];;
+        val it : int list = [1; 5; 2; 6; 3; 7; 4; 8]
+    (On a deck of cards, this is called a perfect out-shuffle.)
+*)
