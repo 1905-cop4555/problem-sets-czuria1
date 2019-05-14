@@ -178,10 +178,10 @@ revlists [[0;1;1];[3;2];[];[5]];;
     Assume that the two lists have the same length.
 *)
 
-let rec interleave xs ys = function
+let rec interleave = function
     | (xs, []) -> xs
     | ([], ys) -> ys
-    | x::xs, y::ys -> x::y::interleave (xs, ys)
+    | (x::xs, y::ys) -> x::y::interleave(xs, ys)
 
  
 interleave ([1;2;3],[4;5;6]);;
