@@ -170,3 +170,18 @@ fun x -> x::[5]
 let revlists list = List.map List.rev list 
 
 revlists [[0;1;1];[3;2];[];[5]];;
+
+(*
+18.Write an F# function interleave(xs,ys) that interleaves two lists:
+  > interleave ([1;2;3],[4;5;6]);;
+        val it : int list = [1; 4; 2; 5; 3; 6]
+    Assume that the two lists have the same length.
+*)
+
+let rec interleave xs ys = function
+    | (xs, []) -> xs
+    | ([], ys) -> ys
+    | x::xs, y::ys -> x::y::interleave (xs, ys)
+
+ 
+interleave ([1;2;3],[4;5;6]);;
