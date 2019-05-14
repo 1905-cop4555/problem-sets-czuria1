@@ -204,10 +204,16 @@ size of the first piece:
         val it : int list * int list = ([1; 3], [4; 2; 7; 0; 9])
 *)
 
-let rec gencut = function
-    | n, [] -> []
-    | 0, xs -> xs
-    | n, x::xs -> x::gencut(n-1,xs)
+//let rec gencut = function
+    //| n, [] -> []
+    //| 0, xs -> xs
+    //| n, x::xs -> x::gencut(n-1,xs)
+
+let rec gencut (n,xs) =
+    match (n, xs) with 
+    | (n, []) -> ([], [])
+    | (0, xs) -> ([],xs)
+    | (n, x::xs) -> (x, xs)
 
 gencut(2, [1;3;4;2;7;0;9]);;
 

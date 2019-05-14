@@ -93,5 +93,10 @@ downFrom 6
 // input is a tuple of a list and a list
 let rec foo = function
     | (xs, [])    -> xs
+    | (xs, y::ys) -> foo (xs@[y], ys)
 
 foo ([1], [])
+
+let swap (a, b) = (b, a);;
+
+swap(1,2)
