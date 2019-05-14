@@ -246,7 +246,13 @@ let gencut(n, right) =
         | n, left, right::rtail -> gencutHelper(n-1, right::left, rtail)
     gencutHelper(n, [], right)
 
-gencut(2, [1;3;4;2;7;0;9]);;
+//gencut(2, [1;3;4;2;7;0;9]);;
+
+let cut list = 
+    let n = List.length list / 2
+    gencut(n, list)
+
+cut [1;2;3;4;5;6];;
 
 (*
 20. Write an F# function shuffle xs that takes an even-length list, cuts it into two equal-sized pieces, and then interleaves the pieces:
