@@ -349,9 +349,8 @@ let shuffle list =
 let countaux(deck, target) =
     let rec shuffle2 count deck =  
         if deck = target then count
-        else shuffle deck |> shuffle2 count+1
-    shuffle2 1 deck target
+        else shuffle deck |> shuffle2 (count+1)
+    shuffle2 1 deck
     
-
 countaux([1;2;3],[2;1;3]);;
 
