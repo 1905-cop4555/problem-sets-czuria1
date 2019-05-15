@@ -383,8 +383,8 @@ cartesian (["a"; "b"; "c"], [1; 2]);;
         = [[]; [3]; [2]; [2; 3]; [1]; [1; 3]; [1; 2]; [1; 2; 3]]
 *)
 
-let powerset = function
+let rec powerset = function
     | [] -> [[]]
-    | x::xs -> [xs]
-
+    | x::xs -> List.map (fun ys -> x::ys) [xs]
+    
 powerset [1;2;3];;
