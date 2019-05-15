@@ -372,6 +372,6 @@ countshuffles 52;;
 
 let rec cartesian = function
     | xs, [] -> []
-    | xs, y::ys -> List.map (fun x -> (x,y)) xs
+    | xs, y::ys -> List.map (fun x -> (x,y)) xs :: cartesian(xs, ys)
 
 cartesian (["a"; "b"; "c"], [1; 2]);;
