@@ -412,6 +412,6 @@ powerset [1;2;3];;
 
 let rec transpose = function
     | [[];_] -> []
-    | m -> List.map List.head m
+    | m -> List.map List.head m :: transpose(List.map List.tail m)
 
 transpose [[1;2;3];[4;5;6]];;
