@@ -346,12 +346,15 @@ let shuffle list =
     let halves = cut2 list
     interleave2 halves
 
-let countaux(deck, target) =
-    let rec countauxHelper (deck, target, count) =
-       if deck = target then count
-       else countauxHelper(deck, target, count+1)
-    countauxHelper(deck, target, 1)
+let countshuffles n = 
+    let countaux(deck, target) =
+        let rec countauxHelper (deck, target, count) =
+           if deck = target then count
+           else countauxHelper(deck, target, count+1)
+        countauxHelper(deck, target, 1)
+    countaux([1..n], [1..n])
  
 
 //countaux([1;2;3;4],[1;3;2;4]);;
 
+countshuffles 4;;
