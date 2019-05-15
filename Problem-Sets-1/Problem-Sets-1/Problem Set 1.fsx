@@ -348,11 +348,10 @@ let shuffle list =
 
 let countaux(deck, target) =
     let rec shuffle2 (deck, target, count) =
-        match deck, target, count with 
-        | deck, target, count when deck = target -> count
-        | deck, target, count when deck <> target -> shuffle2(deck, target, count+1)
+       if deck = target then count
+       else shuffle2(deck, target, count+1)
     shuffle2(deck, target, 1)
  
 
-countaux([1;2;3],[2;1;3]);;
+countaux([1;2;3;4],[1;3;2;4]);;
 
