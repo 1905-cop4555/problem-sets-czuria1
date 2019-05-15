@@ -1,5 +1,5 @@
 ﻿// semicolons are similar to eol
-//[1; 2; 3];;
+[1; 2; 3];;
 
 // another way of writing a list
 //[

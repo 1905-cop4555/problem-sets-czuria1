@@ -385,6 +385,6 @@ cartesian (["a"; "b"; "c"], [1; 2]);;
 
 let rec powerset = function
     | [] -> [[]]
-    | x::xs -> List.map (fun ys -> x::ys) [xs]
+    | x::xs -> List.map (fun y -> x::y) [xs] @ powerset xs 
     
 powerset [1;2;3];;
