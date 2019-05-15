@@ -360,3 +360,18 @@ let countshuffles n =
 //countshuffles 4;;
 
 countshuffles 52;;
+
+(*
+22. Write an uncurried F# function cartesian (xs, ys) that takes as input two lists xs and ys and returns a list of 
+    pairs that represents the Cartesian product of xs and ys. (The pairs in the Cartesian product may appear in any 
+    order.) For example,
+  > cartesian (["a"; "b"; "c"], [1; 2]);;
+        val it : (string * int) list =
+        [("a", 1); ("b", 1); ("c", 1); ("a", 2); ("b", 2); ("c", 2)]
+*)
+
+let rec cartesian = function
+    | xs, [] -> []
+    | xs, y::ys -> List.map (fun x -> (x,y)) xs
+
+cartesian (["a"; "b"; "c"], [1; 2]);;
