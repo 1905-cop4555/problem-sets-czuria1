@@ -353,5 +353,5 @@ let countaux(deck, target) =
     countauxHelper(deck, target, 1)
  
 
-countaux([1;2;3;4],[1;3;2;4]);;
+//countaux([1;2;3;4],[1;3;2;4]);;
 
