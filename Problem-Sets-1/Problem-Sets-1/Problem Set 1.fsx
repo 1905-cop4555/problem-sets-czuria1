@@ -350,8 +350,8 @@ let countshuffles n =
     let countaux(deck, target) =
         let rec countauxHelper (deck, target, count) =
            if deck = target then count
-           else countauxHelper(deck, target, count+1)
-        countauxHelper(deck, target, 1)
+           else countauxHelper(shuffle deck, target, count+1)
+        countauxHelper(shuffle deck, target, 1)
     countaux([1..n], [1..n])
  
 
