@@ -357,4 +357,6 @@ let countshuffles n =
 
 //countaux([1;2;3;4],[1;3;2;4]);;
 
-countshuffles 4;;
+//countshuffles 4;;
+
+countshuffles 52;;
