@@ -293,7 +293,7 @@ let rec interleave2 = function
     | [], [] -> []
     | xs, [] -> xs
     | [], ys -> ys
-    | x::xs, y::ys -> x::y::interleave(xs,ys)
+    | x::xs, y::ys -> x::y::interleave2(xs,ys)
 
 let gencut2(n, right) =
     let rec gencutHelper (n, left, right) = 
@@ -324,4 +324,9 @@ shuffle [1;2;3;4;5;6;7;8];;
     it takes to make deck equal to target.
 *)
 
-//let countaux(deck, target) =
+let countaux(deck, target) =
+    if deck = target then true
+    else false
+
+countaux([2;3],[2;3])
+
