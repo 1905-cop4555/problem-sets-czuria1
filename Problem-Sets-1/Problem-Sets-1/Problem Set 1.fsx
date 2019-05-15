@@ -386,5 +386,32 @@ cartesian (["a"; "b"; "c"], [1; 2]);;
 let rec powerset = function
     | [] -> [[]]
     | x::xs -> List.map (fun y -> x::y) (powerset xs) @ powerset xs 
-    
+
 powerset [1;2;3];;
+
+(*
+24. The transpose of a matrix M is the matrix obtained by reflecting Mabout its diagonal. For example, the transpose of
+     / 1 2 3 \
+     \ 4 5 6 /
+
+    is
+     / 1 4 \
+     | 2 5 |
+     \ 3 6 /
+
+    An m-by-n matrix can be represented in F# as a list of m rows, each of which is a list of length n. For example, 
+    the first matrix above is represented as the list
+      [[1;2;3];[4;5;6]]
+
+    Write an efficient F# function to compute the transpose of an m-by-nmatrix:
+      > transpose [[1;2;3];[4;5;6]];;
+            val it : int list list = [[1; 4]; [2; 5]; [3; 6]]
+
+    Assume that all the rows in the matrix have the same length.
+*)
+
+let rec transpose = function
+    | [[];_] -> []
+    | m -> List.map List.head m
+
+transpose [[1;2;3];[4;5;6]];;
