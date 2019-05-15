@@ -289,6 +289,41 @@ cut [1;2;3;4;5;6];;
     (On a deck of cards, this is called a perfect out-shuffle.)
 *)
 
+//let rec interleave2 = function
+//    | [], [] -> []
+//    | xs, [] -> xs
+//    | [], ys -> ys
+//    | x::xs, y::ys -> x::y::interleave2(xs,ys)
+
+//let gencut2(n, right) =
+//    let rec gencutHelper (n, left, right) = 
+//        match n, left, right with 
+//        | 0, left, right -> List.rev left, right
+//        | n, left, [] -> left, []
+//        | n, left, right::rtail -> gencutHelper(n-1, right::left, rtail)
+//    gencutHelper(n, [], right)
+
+//let cut2 list = 
+//    let n = List.length list / 2
+//    gencut2(n, list)
+
+//let shuffle list =
+    //let halves = cut2 list
+    //interleave2 halves
+
+//shuffle [1;2;3;4;5;6;7;8];;
+
+(*
+21. Write an F# function countshuffles n that counts how many calls to shuffle on a deck of n distinct "cards" it takes 
+    to put the deck back into its original order:
+  > countshuffles 4;;
+        val it : int = 2
+    (To see that this result is correct, note that shuffle [1;2;3;4] = [1;3;2;4], and shuffle [1;3;2;4] = [1;2;3;4].) 
+    What is countshuffles 52?
+    Hint: Define an auxiliary function countaux(deck, target) that takes two lists and returns the number of shuffles 
+    it takes to make deck equal to target.
+*)
+
 let rec interleave2 = function
     | [], [] -> []
     | xs, [] -> xs
@@ -311,22 +346,12 @@ let shuffle list =
     let halves = cut2 list
     interleave2 halves
 
-shuffle [1;2;3;4;5;6;7;8];;
-
-(*
-21. Write an F# function countshuffles n that counts how many calls to shuffle on a deck of n distinct "cards" it takes 
-    to put the deck back into its original order:
-  > countshuffles 4;;
-        val it : int = 2
-    (To see that this result is correct, note that shuffle [1;2;3;4] = [1;3;2;4], and shuffle [1;3;2;4] = [1;2;3;4].) 
-    What is countshuffles 52?
-    Hint: Define an auxiliary function countaux(deck, target) that takes two lists and returns the number of shuffles 
-    it takes to make deck equal to target.
-*)
-
 let countaux(deck, target) =
-    if deck = target then true
-    else false
+    let rec shuffle2 count deck =  
+        if deck = target then count
+        else shuffle deck |> shuffle2 count+1
+    shuffle2 1 deck target
+    
 
-countaux([2;3],[2;3])
+countaux([1;2;3],[2;1;3]);;
 
