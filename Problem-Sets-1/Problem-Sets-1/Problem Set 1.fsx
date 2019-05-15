@@ -347,10 +347,12 @@ let shuffle list =
     interleave2 halves
 
 let countaux(deck, target) =
-    let rec shuffle2 count deck =  
-        if deck = target then count
-        else shuffle deck |> shuffle2 (count+1)
-    shuffle2 1 deck
-    
+    let rec shuffle2 (deck, target, count) =
+        match deck, target, count with 
+        | deck, target, count when deck = target -> count
+        | deck, target, count when deck <> target -> shuffle2(deck, target, count+1)
+    shuffle2(deck, target, 1)
+ 
+
 countaux([1;2;3],[2;1;3]);;
 
