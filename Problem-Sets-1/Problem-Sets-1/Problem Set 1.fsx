@@ -375,3 +375,16 @@ let rec cartesian = function
     | xs, y::ys -> List.map (fun x -> (x,y)) xs :: cartesian(xs, ys)
 
 cartesian (["a"; "b"; "c"], [1; 2]);;
+
+(*
+23. An F# list can be thought of as representing a set, where the order of the elements in the list is irrelevant. Write an F# function powerset such that powerset set returns the set of all subsets of set. For example,
+  > powerset [1;2;3];;
+        val it : int list list
+        = [[]; [3]; [2]; [2; 3]; [1]; [1; 3]; [1; 2]; [1; 2; 3]]
+*)
+
+let powerset = function
+    | [] -> [[]]
+    | x::xs -> [xs]
+
+powerset [1;2;3];;
