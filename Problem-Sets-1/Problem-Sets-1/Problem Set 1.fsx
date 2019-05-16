@@ -239,7 +239,15 @@ let (.+) (a, b) (c, d) =
     let divisor = gcd(numerator, denominator)
     ((numerator/divisor),(denominator/divisor))
 
+let (.*) (a, b) (c, d) = 
+    let numerator = a * c
+    let denominator = b * d
+    let divisor = gcd(numerator, denominator)
+    ((numerator/divisor),(denominator/divisor))
+
 (1,2) .+ (1,3);;
+
+(1,2) .+ (2,3) .* (3,7);;
 
 (*
 17. Write an F# function revlists xs that takes a list of lists xs and reverses all the sub-lists:
