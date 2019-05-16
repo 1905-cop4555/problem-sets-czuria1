@@ -234,7 +234,10 @@ let rec gcd = function
         | (a,b) -> gcd (b, a % b)
 
 let (.+) (a, b) (c, d) = 
-    a + c
+    let numerator = (a * d) + (c * b)
+    let denominator = b * d
+    let divisor = gcd(numerator, denominator)
+    ((numerator/divisor),(denominator/divisor))
 
 (1,2) .+ (1,3);;
 
