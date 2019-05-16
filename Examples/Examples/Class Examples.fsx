@@ -112,3 +112,10 @@ let addition x y z = x + y + z
 
 addition 1 2 3
 1 |> addition 2 3
+
+let mult x y = x * y
+
+let cube x =
+    mult x x |> mult x
+
+cube 2;;
