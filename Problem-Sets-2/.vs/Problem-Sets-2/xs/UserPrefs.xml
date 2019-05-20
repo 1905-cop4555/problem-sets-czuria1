@@ -1,0 +1,25 @@
+﻿<Properties StartupConfiguration="{C0870E4C-A1EA-4D60-AFA4-19CE32F09CC2}|Default">
+  <MonoDevelop.Ide.ItemProperties.Problem-Sets-2 FirstBuild="True" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Problem-Sets-2/Program.fs">
+    <Files>
+      <File FileName="Problem-Sets-2/Program.fs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Problem-Sets-2" expanded="True">
+            <Node name="Problem-Sets-2" expanded="True">
+              <Node name="Program.fs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

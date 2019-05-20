@@ -1,0 +1,17 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Problem-Sets-1", "Problem-Sets-1.fsproj", "{998A5E06-E644-4DB5-9558-BB135A297BCE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{998A5E06-E644-4DB5-9558-BB135A297BCE}.Debug|x86.ActiveCfg = Debug|x86
+		{998A5E06-E644-4DB5-9558-BB135A297BCE}.Debug|x86.Build.0 = Debug|x86
+		{998A5E06-E644-4DB5-9558-BB135A297BCE}.Release|x86.ActiveCfg = Release|x86
+		{998A5E06-E644-4DB5-9558-BB135A297BCE}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+EndGlobal
