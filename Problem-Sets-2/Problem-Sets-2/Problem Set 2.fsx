@@ -12,6 +12,9 @@ type 'a Coordinates =
     | Threeple of x: 'a * y: 'a * z: 'a
     | Fourple of x: 'a * y: 'a * z: 'a * w: 'a
 
+// construct union of a tuple of integers
+let coor1 = Coordinates(x = 1, y = 2)
+
 (*
 11. Record
     Create a record type for Name, Credits and GPA.
