@@ -1,4 +1,18 @@
 ﻿(*
+2. Discriminated Union
+    a. Create a discriminated union for Coordinates that can be a Tuple, Threeple or Fourple that represent tuples of size two, three and four. The type for the union should be polymorphic.
+    b. Instantiate a Tuple of integers, a Threeple of floats and a Fourple of strings.
+    c. Create a function that has a parameter of a binary function and Coordinate. Apply the function to the Coordinate like List.reduce.
+    d. Call the function with (+) for each of the Coordinates in part (b).
+    e. Call the function with (-) for the numeric Coordinates in part (b). Be sure that your function implements the normal associativity for (-).
+*)
+
+type 'a Coordinates = 
+    | Tuple of x: 'a * y: 'a
+    | Threeple of x: 'a * y: 'a * z: 'a
+    | Fourple of x: 'a * y: 'a * z: 'a * w: 'a
+
+(*
 11. Record
     Create a record type for Name, Credits and GPA.
     Create a record instance with the values "Jones", 109, 3.85.
