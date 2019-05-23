@@ -13,7 +13,9 @@ type 'a Coordinates =
     | Fourple of x: 'a * y: 'a * z: 'a * w: 'a
 
 // construct union of a tuple of integers
-let coor1 = Coordinates(x = 1, y = 2)
+let coor1 = Tuple(x = 1, y = 2)
+let coor2 = Threeple(x = 1, y = 2, z = 3)
+let coor3 = Fourple(x = 1, y = 2, z = 3, w = 4)
 
 (*
 11. Record
