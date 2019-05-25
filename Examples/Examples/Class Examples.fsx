@@ -28,3 +28,23 @@ let opinion = function
 type 'a tree = 
     | Lf
     | Br of 'a * 'a tree * 'a tree
+
+Br ("cat", Lf, Lf)
+
+// sum in binary tree
+let rec sum = function 
+    | Lf -> 0
+    | Br(m, t1, t2) -> m + sum t1 + sum t2
+
+// find in binary tree
+let rec element n = function
+    | Lf -> false
+    | Br(m, t1, t2) -> if n = m then true
+                       elif n < m then element n t1
+                       else element n t2
+
+// insert in binary tree
+let rec insert n = function
+    | Lf -> Br(n, Lf, Lf)
+    | Br(m, t1, t2) -> if n < m then insert n t1
+                       else insert n t2
