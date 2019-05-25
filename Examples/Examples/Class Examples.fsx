@@ -53,3 +53,10 @@ let rec insert n = function
 let rec buildtree = function
     | [] -> Lf
     | x::xs -> insert x (buildtree xs)
+
+let t1 = buildtree [3;1;4]
+let t2 = buildtree ["cat";"dog";"bird"]
+
+// insert into existing tree
+let tr1 = insert 5 t1
+let tr2 = insert "snake" t2
