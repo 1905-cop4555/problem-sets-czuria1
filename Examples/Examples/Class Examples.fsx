@@ -23,3 +23,8 @@ let opinion = function
     //| Red -> "nice" // without this you get a warning
     | Blue -> "lovely"
     | Green -> "ugly"
+
+// trees
+type 'a tree = 
+    | Lf
+    | Br of 'a * 'a tree * 'a tree
