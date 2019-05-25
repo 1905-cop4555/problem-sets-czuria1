@@ -43,8 +43,13 @@ let rec element n = function
                        elif n < m then element n t1
                        else element n t2
 
-// insert in binary tree
+// correct insert in binary tree
 let rec insert n = function
     | Lf -> Br(n, Lf, Lf)
-    | Br(m, t1, t2) -> if n < m then insert n t1
-                       else insert n t2
+    | Br(m, t1, t2) -> if n < m then Br(m, insert n t1, t2)
+                       else Br(m, t1, insert n t2)
+
+// build a tree from a list
+let rec buildtree = function
+    | [] -> Lf
+    | x::xs -> insert x (buildtree xs)
