@@ -60,3 +60,16 @@ let t2 = buildtree ["cat";"dog";"bird"]
 // insert into existing tree
 let tr1 = insert 5 t1
 let tr2 = insert "snake" t2
+
+// parsing a string to a token list
+type tokens = ZERO | ONE | EOF | ERROR
+
+let rec parse = function 
+    | "" -> [EOF]
+    | s ->
+        match s.Chars 0 with 
+        | '0' -> ZERO :: parse (s.Substring 1)
+        | '1' -> ONE :: parse (s.Substring 1)
+        | c -> failwith (sprintf "PARSE: invalid input %A." c)
+
+let string = "00101"
