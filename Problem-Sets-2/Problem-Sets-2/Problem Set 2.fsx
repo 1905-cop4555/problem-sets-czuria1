@@ -141,12 +141,26 @@ test_program [IF;ID;THEN;BEGIN;PRINT;ID;SEMICOLON;PRINT;ID;SEMICOLON;END;ELSE;PR
         test_program [LPAREN;ID;SUB;ID;RPAREN;MUL;ID;EOF] 
 *)
 
-type TERMINAL = ID|ADD|SUB|MUL|LPAREN|RPAREN|EOF
+type TERMINAL = ID|ADD|SUB|MUL|DIV|LPAREN|RPAREN|EOF
+
+let eat token = function
+    | [] -> failwith "premature termination of input"
+    | x::xs ->
+        if x = token
+        then xs
+        else failwith (sprintf "want %A, got %A" token x)
 
 let rec E = function
     | [] -> failwith "premature termination of input"
     | x::xs ->
+        let F = eat ID
+        let rec T tok = 
+            | MUL ->
+            | DIV ->
+            | _ -> failwith
         match x with 
+        | ADD -> xs |> F |> T
+        | SUB ->
         | _ -> failwith (sprintf "S:, want _, got %A" x)
 
 let accept() = printfn("Input accepted")
