@@ -141,6 +141,24 @@ test_program [IF;ID;THEN;BEGIN;PRINT;ID;SEMICOLON;PRINT;ID;SEMICOLON;END;ELSE;PR
         test_program [LPAREN;ID;SUB;ID;RPAREN;MUL;ID;EOF] 
 *)
 
+type TERMINAL = ID|ADD|SUB|MUL|LPAREN|RPAREN|EOF
+
+let rec E = function
+    | [] -> failwith "premature termination of input"
+    | x::xs ->
+        match x with 
+        | _ -> failwith (sprintf "S:, want _, got %A" x)
+
+let accept() = printfn("Input accepted")
+let error() = printfn("Current general error message")
+
+let test_program program =
+          let result = program |> S
+          match result with 
+          | [] -> failwith "Early termination or missing EOF"
+          | x::xs -> if x = EOF then accept() else error()
+
+
 (*
 11. Record
     Create a record type for Name, Credits and GPA.
