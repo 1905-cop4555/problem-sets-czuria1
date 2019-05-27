@@ -52,8 +52,9 @@ let coor1 = Tuple(x = 1, y = 2)
 let coor2 = Threeple(x = 1, y = 2, z = 3)
 let coor3 = Fourple(x = 1, y = 2, z = 3, w = 4)
 
-let coord_operator = function
-    | Tuple -> "Tuple"
+let coord_operator x:Coordinates f = function
+    List.reduce f x
+
 
 
 (*
@@ -96,6 +97,7 @@ let rec S = function
     | x::xs ->
         match x with  
         | IF -> xs |> S |> eat ID
+        | ID -> xs
         | THEN -> x::xs
         | ELSE -> x::xs
         | _ -> failwith (sprintf "S:, want _, got %A" x)
