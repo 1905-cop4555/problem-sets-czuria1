@@ -49,6 +49,12 @@ let coord_operator = function
 
 type TERMINAL = IF|THEN|ELSE|BEGIN|END|PRINT|SEMICOLON|ID|EOF
 
+let syntax = function
+    | IF -> "if"
+    | THEN -> "then"
+
+syntax IF
+
 (*
 11. Record
     Create a record type for Name, Credits and GPA.
