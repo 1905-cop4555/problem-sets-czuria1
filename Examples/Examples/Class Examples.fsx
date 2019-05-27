@@ -75,3 +75,6 @@ let rec parse = function
 let string = "00101"
 
 parse string
+
+// using List.reduce 
+List.reduce (+) ["a"; "b"]
