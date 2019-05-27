@@ -223,3 +223,9 @@ let rec delete n = function
     | Br(m, t1, t2) ->
         if n < m then Br(m, delete n t1, t2)
         else Br(m, t1, remove n t2)
+
+(*
+13. Building Parse Trees
+    Modify problem 2 so that it builds a parse tree as it processes input. On valid input, display the generated tree.
+    Modify problem 3 so that it builds a parse tree as it processes input. On valid input, display the generated tree.
+*)
