@@ -52,8 +52,7 @@ let coor1 = Tuple(x = 1, y = 2)
 let coor2 = Threeple(x = 1, y = 2, z = 3)
 let coor3 = Fourple(x = 1, y = 2, z = 3, w = 4)
 
-let coord_operator x:Coordinates f = function
-    List.reduce f x
+let coord_operator x:Coordinates = List.reduce f x
 
 
 
