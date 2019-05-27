@@ -95,14 +95,19 @@ let eat token = function
         then xs
         else failwith (sprintf "want %A, got %A" token x)
 
+let E = eat ID
+
+let rec L tok = function
+    | END::xs -> xs 
+    | SEMICOLON::xs -> xs |> S |> L xs
+
 let rec S = function
     | [] -> failwith "premature termination of input"
     | x::xs ->
         match x with  
-        | IF -> xs |> S |> eat ID
-        | ID -> xs
-        | THEN -> x::xs
-        | ELSE -> x::xs
+        | IF -> xs |> E |> eat THEN |> S |> eat ELSE |> S
+        | BEGIN -> xs |> S |> L
+        | PRINT -> xs |> E
         | _ -> failwith (sprintf "S:, want _, got %A" x)
 
 let accept() = printfn("Input accepted")
