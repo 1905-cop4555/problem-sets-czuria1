@@ -52,6 +52,15 @@ type TERMINAL = IF|THEN|ELSE|BEGIN|END|PRINT|SEMICOLON|ID|EOF
 let eat token = function
     | [] -> failwith "premature termination of input"
     | x::xs ->
+        if x = token
+        then xs
+        else failwith (sprintf "want %A, got %A" token x)
+
+let rec S = function
+    | [] -> failwith "premature termination of input"
+    | x::xs ->
+        match x with 
+
 
 let accept() = printfn("Input accepted")
 let error() = printfn("Current general error message")
