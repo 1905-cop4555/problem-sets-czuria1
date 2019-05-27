@@ -172,6 +172,23 @@ let test_program program =
           | [] -> failwith "Early termination or missing EOF"
           | x::xs -> if x = EOF then accept() else error()
 
+(*
+6. Given an m-by-n matrix A and an n-by-p matrix B, the product of A and B is an m-by-p matrix whose entry in position (i,j) is the inner product of row i of A with column j of B. For example,
+                  / 0 1 \
+    / 1 2 3 \  *  | 3 2 |  =  /  9 11 \
+    \ 4 5 6 /     \ 1 2 /     \ 21 26 /
+    Write an uncurried F# function to do matrix multiplication:
+
+      > multiply ([[1;2;3];[4;5;6]], [[0;1];[3;2];[1;2]]);;
+        val it : int list list = [[9; 11]; [21; 26]]
+    Assume that the dimensions of the matrices are appropriate.
+
+    Hint: Use transpose (from Problem Set 1), inner, and List.map.
+*)
+
+let rec transpose = function
+    | [[];_] -> []
+    | m -> List.map List.head m :: transpose(List.map List.tail m)
 
 (*
 11. Record
