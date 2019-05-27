@@ -121,6 +121,11 @@ let test_program program =
 
 test_program [IF;ID;THEN;BEGIN;PRINT;ID;SEMICOLON;PRINT;ID;END;ELSE;PRINT;ID;EOF]
 
+test_program [IF;ID;THEN;IF;ID;THEN;PRINT;ID;ELSE;PRINT;ID;ELSE;BEGIN;PRINT;ID;END;EOF]
+
+// did get an error
+test_program [IF;ID;THEN;BEGIN;PRINT;ID;SEMICOLON;PRINT;ID;SEMICOLON;END;ELSE;PRINT;ID;EOF]
+
 
 (*
 4. Implement a syntax checker using functional programming and immutable data for the unambiguous grammar for arithmetic expressions, from the Notes on Programming Language Syntax.
