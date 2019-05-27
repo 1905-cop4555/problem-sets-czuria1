@@ -59,7 +59,7 @@ let eat token = function
 let rec S = function
     | [] -> failwith "premature termination of input"
     | x::xs ->
-        match x with 
+        match x with  
         | IF -> xs |> S |> eat ID
         | THEN -> x::xs
         | ELSE -> x::xs
@@ -73,6 +73,8 @@ let test_program program =
           match result with 
           | [] -> failwith "Early termination or missing EOF"
           | x::xs -> if x = EOF then accept() else error()
+
+test_program [IF;ID;THEN;BEGIN;PRINT;ID;SEMICOLON;PRINT;ID;END;ELSE;PRINT;ID;EOF]
 
 (*
 11. Record
