@@ -17,7 +17,13 @@ conversion. For example,
         > plus3 10;;
         val it : int = 13
     What are the types of curry and uncurry?
-    *)
+*)
+
+let uncurry f (a,b) = f a b
+
+(+)
+
+let plus = uncurry (+)
 
 (*
 2. Discriminated Union
