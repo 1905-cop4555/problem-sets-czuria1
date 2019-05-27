@@ -60,7 +60,10 @@ let rec S = function
     | [] -> failwith "premature termination of input"
     | x::xs ->
         match x with 
-
+        | IF -> xs |> S |> eat ID
+        | THEN -> x::xs
+        | ELSE -> x::xs
+        | _ -> failwith (sprintf "S:, want _, got %A" x)
 
 let accept() = printfn("Input accepted")
 let error() = printfn("Current general error message")
