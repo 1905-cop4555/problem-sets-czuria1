@@ -111,6 +111,21 @@ let test_program program =
 
 test_program [IF;ID;THEN;BEGIN;PRINT;ID;SEMICOLON;PRINT;ID;END;ELSE;PRINT;ID;EOF]
 
+
+(*
+4. Implement a syntax checker using functional programming and immutable data for the unambiguous grammar for arithmetic expressions, from the Notes on Programming Language Syntax.
+        E -> E + T | E - T | T
+        T -> T * F | T / F | F
+        F -> i | (E)
+    Use the suggestion in the notes to get around the fact that this grammar appears to need more than one lookahead token.
+
+    You do not have to tokenize the input strings. Assume that the tokenizing has been done. Pass a list of tokens that represent a program into the start symbol. Try these program examples:
+
+        test_program [ID;ADD;ID;ADD;ID;ADD;ID;EOF]
+        test_program [ID;SUB;ID;MUL;ID;EOF]
+        test_program [LPAREN;ID;SUB;ID;RPAREN;MUL;ID;EOF] 
+*)
+
 (*
 11. Record
     Create a record type for Name, Credits and GPA.
