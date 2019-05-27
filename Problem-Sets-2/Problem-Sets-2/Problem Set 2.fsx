@@ -97,16 +97,16 @@ let eat token = function
 
 let E = eat ID
 
-let rec L tok = function
-    | END::xs -> xs 
-    | SEMICOLON::xs -> xs |> S |> L xs
-
 let rec S = function
     | [] -> failwith "premature termination of input"
     | x::xs ->
+        let rec L tok = function
+            | END::xs -> xs 
+            | SEMICOLON::xs -> xs |> S |> L xs
+            | _ -> failwith (sprintf "L:, got %A" tok)
         match x with  
         | IF -> xs |> E |> eat THEN |> S |> eat ELSE |> S
-        | BEGIN -> xs |> S |> L
+        | BEGIN -> xs |> S |> L xs
         | PRINT -> xs |> E
         | _ -> failwith (sprintf "S:, want _, got %A" x)
 
