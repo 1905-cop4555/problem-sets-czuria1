@@ -25,6 +25,14 @@ let uncurry f (a,b) = f a b
 
 let plus = uncurry (+)
 
+let curry f a b = f (a, b)
+
+let cplus = curry plus
+
+let plus3 = cplus 3
+
+plus3 10
+
 (*
 2. Discriminated Union
     a. Create a discriminated union for Coordinates that can be a Tuple, Threeple or Fourple that represent tuples of size two, three and four. The type for the union should be polymorphic.
