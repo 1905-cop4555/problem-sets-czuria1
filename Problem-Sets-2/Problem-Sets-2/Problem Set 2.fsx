@@ -49,11 +49,18 @@ let coord_operator = function
 
 type TERMINAL = IF|THEN|ELSE|BEGIN|END|PRINT|SEMICOLON|ID|EOF
 
-let syntax = function
-    | IF -> "if"
-    | THEN -> "then"
+let eat token = function
+    | [] -> failwith "premature termination of input"
+    | x::xs ->
 
-syntax IF
+let accept() = printfn("Input accepted")
+let error() = printfn("Current general error message")
+
+let test_program program =
+          let result = program |> S
+          match result with 
+          | [] -> failwith "Early termination or missing EOF"
+          | x::xs -> if x = EOF then accept() else error()
 
 (*
 11. Record

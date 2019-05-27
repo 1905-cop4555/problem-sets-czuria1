@@ -73,3 +73,5 @@ let rec parse = function
         | c -> failwith (sprintf "PARSE: invalid input %A." c)
 
 let string = "00101"
+
+parse string
