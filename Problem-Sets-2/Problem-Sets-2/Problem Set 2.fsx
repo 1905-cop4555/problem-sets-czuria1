@@ -207,3 +207,19 @@ type Student = {Name: string; Credits: int; GPA: float}
 
 // record instance
 let s = {Name = "Jones"; Credits = 109; GPA = 3.85}
+
+(*
+12. Binary Search Tree
+    Write a function that searches for a value in a binary search tree and then removes that node. Be sure to handle all of these cases:
+        * The value is not in the tree.
+        * Both children are Lf.
+        * One child node is a Br the other is a Lf.
+        * Both children are Br nodes.
+*)
+
+let rec delete n = function
+    | Lf -> Lf
+    | Br(m, t1, t2) when n = m -> ?
+    | Br(m, t1, t2) ->
+        if n < m then Br(m, delete n t1, t2)
+        else Br(m, t1, remove n t2)
