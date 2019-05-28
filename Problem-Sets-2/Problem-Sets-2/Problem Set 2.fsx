@@ -103,12 +103,12 @@ let rec S = function
         let rec L tok = function
             | END::xs -> xs 
             | SEMICOLON::xs -> xs |> S |> L xs
-            | _ -> failwith (sprintf "L:, got %A" tok)
+            | _ -> failwith (sprintf "L: got %A" tok)
         match x with  
         | IF -> xs |> E |> eat THEN |> S |> eat ELSE |> S
         | BEGIN -> xs |> S |> L xs
         | PRINT -> xs |> E
-        | _ -> failwith (sprintf "S:, want _, got %A" x)
+        | _ -> failwith (sprintf "S: got %A" x)
 
 let accept() = printfn("Input accepted")
 let error() = printfn("Current general error message")
@@ -155,13 +155,13 @@ let rec E = function
     | x::xs ->
         let F = eat ID
         let rec T tok = 
-            | MUL ->
-            | DIV ->
-            | _ -> failwith
+            | MUL -> xs |> T |> F
+            | DIV -> xs |> T |> F
+            | _ -> failwith (sprintf "T: got %A" x)
         match x with 
-        | ADD -> xs |> F |> T
-        | SUB ->
-        | _ -> failwith (sprintf "S:, want _, got %A" x)
+        | ADD -> xs |> E |> T xs
+        | SUB -> xs |> E |> T xs
+        | _ -> failwith (sprintf "E: got %A" x)
 
 let accept() = printfn("Input accepted")
 let error() = printfn("Current general error message")
