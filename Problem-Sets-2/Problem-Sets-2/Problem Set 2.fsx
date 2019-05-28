@@ -153,17 +153,17 @@ let eat token = function
 let rec E = function
     | [] -> failwith "premature termination of input"
     | x::xs ->
-        let F tok = function
-            | LPAREN -> xs |> E
-            | RPAREN -> xs
-            | _ -> failwith (sprintf "F: got %A" tok)
-        let rec T tok = function
-            | MUL-> xs |> T |> F
-            | DIV -> xs |> T |> F
-            | _ -> failwith (sprintf "T: got %A" tok)
+        let F = function
+            | LPAREN::xs -> xs |> E
+            | RPAREN::xs -> xs
+            | _ -> failwith (sprintf "F: got %A" x)
+        let rec T = function
+            | MUL::xs -> xs |> T |> F
+            | DIV::xs -> xs |> T |> F
+            | _ -> failwith (sprintf "T: got %A" x)
         match x with 
-        | ADD -> xs |> E |> T
-        | SUB -> xs |> E |> T
+        | ADD -> xs |> E |> T xs
+        | SUB -> xs |> E |> T xs
         | _ -> failwith (sprintf "E: got %A" x)
 
 let accept() = printfn("Input accepted")
