@@ -141,6 +141,24 @@ coord_operator coor1
         test_program [LPAREN;ID;SUB;ID;RPAREN;MUL;ID;EOF] 
 *)
 
+//let rec E = function
+    //| [] -> failwith "premature termination of input"
+    //| x::xs ->
+        //let F = function
+        //    | LPAREN::xs -> xs |> E
+        //    | RPAREN::xs -> xs
+        //    | _ -> failwith (sprintf "F: got %A" x)
+        //let rec T = function
+        //    | MUL::xs -> xs |> T |> F
+        //    | DIV::xs -> xs |> T |> F
+        //    | _ -> failwith (sprintf "T: got %A" x)
+        //match x with 
+        //| ADD -> xs |> E |> T xs
+        //| SUB -> xs |> E |> T xs
+        //| _ -> failwith (sprintf "E: got %A" x)
+
+// E -> E + T
+// T -> i
 type TERMINAL = ID|ADD|SUB|MUL|DIV|LPAREN|RPAREN|EOF
 
 let eat token = function
@@ -150,20 +168,14 @@ let eat token = function
         then xs
         else failwith (sprintf "want %A, got %A" token x)
 
+let T = eat ID
+
 let rec E = function
     | [] -> failwith "premature termination of input"
     | x::xs ->
-        let F = function
-            | LPAREN::xs -> xs |> E
-            | RPAREN::xs -> xs
-            | _ -> failwith (sprintf "F: got %A" x)
-        let rec T = function
-            | MUL::xs -> xs |> T |> F
-            | DIV::xs -> xs |> T |> F
-            | _ -> failwith (sprintf "T: got %A" x)
         match x with 
+        | ID -> T
         | ADD -> xs |> E |> T xs
-        | SUB -> xs |> E |> T xs
         | _ -> failwith (sprintf "E: got %A" x)
 
 let accept() = printfn("Input accepted")
@@ -174,6 +186,9 @@ let test_program program =
           match result with 
           | [] -> failwith "Early termination or missing EOF"
           | x::xs -> if x = EOF then accept() else error()
+
+// 1 + 2
+test_program [ID;ADD;ID;EOF]
 
 (*
 5. Given vectors u = (u1, u2,..., un) and v = (v1, v2,..., vn), the inner product of u and v is defined to be u1*v1 + u2*v2 + ... + u n*vn. 
