@@ -251,6 +251,22 @@ multiply ([[1;2;3];[4;5;6]], [[0;1];[3;2];[1;2]])
 *)
 
 (*
+9. The built-in discriminated union
+      type 'a option = None | Some of 'a
+    is useful when handling invalid input. For example, a function that returns the last element in a list cannot return an element for the empty list. One possibility is to raise an exception. Another possibility is to use the option discriminated union. When the function is passed an empty list, the function will return None. When a non-empty list is passed to the function, it will return Some x, where x is the last element in the list.
+
+    Write a recursive function that returns the last element in its list parameter, using the option type to handle invalid input. You may not use reduce. Do not reverse the list. Do not index into the list. Use recursion.
+
+    Write a helper function that converts an option to a string. If the option is None then return "Invalid Input", otherwise use sprintf to convert the value in the option to a string.
+
+    Write a test function that calls the above function with an empty list, a list of one element, and a list of multiple elements. Display an appropriate message to the terminal after each function call. The output of the test function should be similar to
+
+    The last element of [] is "Invalid Input"
+    The last element of ["cat"] is "cat"
+    The last element of [1; 2; 3; 4; 5] is 5
+*)
+
+(*
 11. Record
     Create a record type for Name, Credits and GPA.
     Create a record instance with the values "Jones", 109, 3.85.
