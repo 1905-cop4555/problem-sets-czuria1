@@ -78,3 +78,12 @@ parse string
 
 // using List.reduce 
 List.reduce (+) ["a"; "b"]
+
+// pattern matching option
+let testoption = function
+    | None -> "No value"
+    | Some(n) -> sprintf "%i" n
+
+testoption Some(15)
+
+testoption None
