@@ -197,6 +197,15 @@ let rec inner x y =
 
 inner [1;2;3] [4;5;6]
 
+let rec innerTail x y tail = 
+    match x,y with 
+    | [], [] -> tail
+    | [], _ -> failwith ("Vector lists are not of the same length")
+    | _, [] -> failwith ("Vector lists are not of the same length")
+    | x::xs, y::ys -> innerTail xs ys (tail + x * y)
+
+innerTail [1;2;3] [4;5;6] 0
+
 (*
 6. Given an m-by-n matrix A and an n-by-p matrix B, the product of A and B is an m-by-p matrix whose entry in 
 position (i,j) is the inner product of row i of A with column j of B. For example,
