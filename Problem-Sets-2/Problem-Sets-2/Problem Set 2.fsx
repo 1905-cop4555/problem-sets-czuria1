@@ -282,6 +282,12 @@ last ["cat"]
 last [1; 2; 3; 4; 5]
 
 (*
+10. Interpreter 0 In this problem, we begin our exploration of the use of F# for language-oriented programming. 
+    You will write an F# program to evaluate arithmetic expressions written in the language given by the following context-free grammar:
+    E -> n | -E | E + E | E - E | E * E | E / E | (E)
+  *)
+
+(*
 11. Record
     Create a record type for Name, Credits and GPA.
     Create a record instance with the values "Jones", 109, 3.85.
