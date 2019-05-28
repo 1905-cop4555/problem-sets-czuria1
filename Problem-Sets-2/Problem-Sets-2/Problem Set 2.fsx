@@ -266,6 +266,21 @@ multiply ([[1;2;3];[4;5;6]], [[0;1];[3;2];[1;2]])
     The last element of [1; 2; 3; 4; 5] is 5
 *)
 
+type 'a option = None | Some of 'a
+
+let op = function
+    | None -> "Invalid input"
+    | Some x -> sprintf ("%A") x
+
+let rec last = function
+    | [] -> None
+    | [x] -> Some x
+    | x::xs -> last xs
+
+last []
+last ["cat"]
+last [1; 2; 3; 4; 5]
+
 (*
 11. Record
     Create a record type for Name, Credits and GPA.
