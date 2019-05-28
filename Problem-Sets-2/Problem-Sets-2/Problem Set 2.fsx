@@ -233,10 +233,22 @@ let rec inner x y =
     | x::xs, y::ys -> x * y + inner xs ys
 
 let rec multiply matrix =
+    match matrix with 
     | _, [y] -> y
     | [x], _ -> x
 
 multiply ([[1;2;3];[4;5;6]], [[0;1];[3;2];[1;2]])
+
+(*
+7. Evaluate the asymptotic time complexity of this function:
+    let rec oddeven = function
+    | [] -> []                              // O(1)
+    | x::xs -> if x % 2 = 0                 // O(1)
+               then oddeven xs @ [x]        // O(n^2)
+               else x :: oddeven xs         // O(n) based on size of list xs
+
+    Time complexity of O(n^2)
+*)
 
 (*
 11. Record
