@@ -221,13 +221,20 @@ position (i,j) is the inner product of row i of A with column j of B. For exampl
     Hint: Use transpose (from Problem Set 1), inner, and List.map.
 *)
 
-let rec transpose x = 
-    match x with 
-    | x -> x
-    | x -> List.map List.head x:: transpose(List.map List.tail x)
+let rec transpose = function
+    | [[];_] -> []
+    | m -> List.map List.head m :: transpose(List.map List.tail m)
 
-let multiply x y = function
+let rec inner x y = 
+    match x,y with 
+    | [], [] -> 0
+    | [], _ -> failwith ("Vector lists are not of the same length")
+    | _, [] -> failwith ("Vector lists are not of the same length")
+    | x::xs, y::ys -> x * y + inner xs ys
 
+let rec multiply matrix =
+    | _, [y] -> y
+    | [x], _ -> x
 
 multiply ([[1;2;3];[4;5;6]], [[0;1];[3;2];[1;2]])
 
