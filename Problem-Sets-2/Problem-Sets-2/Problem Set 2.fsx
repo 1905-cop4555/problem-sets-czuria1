@@ -190,7 +190,12 @@ Write a curried F# function inner that takes two vectors represented as int list
 
 let rec inner x y = 
     match x,y with 
-    |
+    | [], [] -> 0
+    | [], _ -> failwith ("Vector lists are not of the same length")
+    | _, [] -> failwith ("Vector lists are not of the same length")
+    | x::xs, y::ys -> x * y + inner xs ys
+
+inner [1;2;3] [4;5;6]
 
 (*
 6. Given an m-by-n matrix A and an n-by-p matrix B, the product of A and B is an m-by-p matrix whose entry in 
