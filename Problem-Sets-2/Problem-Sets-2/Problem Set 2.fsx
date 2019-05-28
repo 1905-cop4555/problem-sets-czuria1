@@ -86,45 +86,45 @@ coord_operator coor1
     Print an accept message when the input is valid and completely consumed. Generate appropriate error messages for incorrect symbols, not enough input, and too much input.
 *)
 
-type TERMINAL = IF|THEN|ELSE|BEGIN|END|PRINT|SEMICOLON|ID|EOF
+//type TERMINAL = IF|THEN|ELSE|BEGIN|END|PRINT|SEMICOLON|ID|EOF
 
-let eat token = function
-    | [] -> failwith "premature termination of input"
-    | x::xs ->
-        if x = token
-        then xs
-        else failwith (sprintf "want %A, got %A" token x)
+//let eat token = function
+//    | [] -> failwith "premature termination of input"
+//    | x::xs ->
+//        if x = token
+//        then xs
+//        else failwith (sprintf "want %A, got %A" token x)
 
-let E = eat ID
+//let E = eat ID
 
-let rec S = function
-    | [] -> failwith "premature termination of input"
-    | x::xs ->
-        let rec L tok = function
-            | END::xs -> xs 
-            | SEMICOLON::xs -> xs |> S |> L xs
-            | _ -> failwith (sprintf "L: got %A" tok)
-        match x with  
-        | IF -> xs |> E |> eat THEN |> S |> eat ELSE |> S
-        | BEGIN -> xs |> S |> L xs
-        | PRINT -> xs |> E
-        | _ -> failwith (sprintf "S: got %A" x)
+//let rec S = function
+//    | [] -> failwith "premature termination of input"
+//    | x::xs ->
+//        let rec L tok = function
+//            | END::xs -> xs 
+//            | SEMICOLON::xs -> xs |> S |> L xs
+//            | _ -> failwith (sprintf "L: got %A" tok)
+//        match x with  
+//        | IF -> xs |> E |> eat THEN |> S |> eat ELSE |> S
+//        | BEGIN -> xs |> S |> L xs
+//        | PRINT -> xs |> E
+//        | _ -> failwith (sprintf "S: got %A" x)
 
-let accept() = printfn("Input accepted")
-let error() = printfn("Current general error message")
+//let accept() = printfn("Input accepted")
+//let error() = printfn("Current general error message")
 
-let test_program program =
-          let result = program |> S
-          match result with 
-          | [] -> failwith "Early termination or missing EOF"
-          | x::xs -> if x = EOF then accept() else error()
+//let test_program program =
+//          let result = program |> S
+//          match result with 
+//          | [] -> failwith "Early termination or missing EOF"
+//          | x::xs -> if x = EOF then accept() else error()
 
-test_program [IF;ID;THEN;BEGIN;PRINT;ID;SEMICOLON;PRINT;ID;END;ELSE;PRINT;ID;EOF]
+//test_program [IF;ID;THEN;BEGIN;PRINT;ID;SEMICOLON;PRINT;ID;END;ELSE;PRINT;ID;EOF]
 
-test_program [IF;ID;THEN;IF;ID;THEN;PRINT;ID;ELSE;PRINT;ID;ELSE;BEGIN;PRINT;ID;END;EOF]
+//test_program [IF;ID;THEN;IF;ID;THEN;PRINT;ID;ELSE;PRINT;ID;ELSE;BEGIN;PRINT;ID;END;EOF]
 
-// did get an error
-test_program [IF;ID;THEN;BEGIN;PRINT;ID;SEMICOLON;PRINT;ID;SEMICOLON;END;ELSE;PRINT;ID;EOF]
+//// did get an error
+//test_program [IF;ID;THEN;BEGIN;PRINT;ID;SEMICOLON;PRINT;ID;SEMICOLON;END;ELSE;PRINT;ID;EOF]
 
 
 (*
@@ -153,21 +153,24 @@ let eat token = function
 let rec E = function
     | [] -> failwith "premature termination of input"
     | x::xs ->
-        let F = eat ID
-        let rec T tok = 
-            | MUL -> xs |> T |> F
+        let F tok = function
+            | LPAREN -> xs |> E
+            | RPAREN -> xs
+            | _ -> failwith (sprintf "F: got %A" tok)
+        let rec T tok = function
+            | MUL-> xs |> T |> F
             | DIV -> xs |> T |> F
-            | _ -> failwith (sprintf "T: got %A" x)
+            | _ -> failwith (sprintf "T: got %A" tok)
         match x with 
-        | ADD -> xs |> E |> T xs
-        | SUB -> xs |> E |> T xs
+        | ADD -> xs |> E |> T
+        | SUB -> xs |> E |> T
         | _ -> failwith (sprintf "E: got %A" x)
 
 let accept() = printfn("Input accepted")
 let error() = printfn("Current general error message")
 
 let test_program program =
-          let result = program |> S
+          let result = program |> E
           match result with 
           | [] -> failwith "Early termination or missing EOF"
           | x::xs -> if x = EOF then accept() else error()
