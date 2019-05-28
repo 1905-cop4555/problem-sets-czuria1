@@ -176,6 +176,23 @@ let test_program program =
           | x::xs -> if x = EOF then accept() else error()
 
 (*
+5. Given vectors u = (u1, u2,..., un) and v = (v1, v2,..., vn), the inner product of u and v is defined to be u1*v1 + u2*v2 + ... + u n*vn. 
+Write a curried F# function inner that takes two vectors represented as int list and returns their inner product.
+    Throw an exception if the lists do not have the same length.
+    Do not use any built-in or borrowed functions. Write it from scratch.
+    Use big integers.
+    Write a version without using tail recursion.
+    Write another version using tail recursion.
+    Try both versions on the input [1I..50000I] [50001I..100000I]. Increase the ranges until you get stack overflow on the non-tail-recursive version.
+      > inner [1;2;3] [4;5;6];;
+        val it : int = 32
+*)
+
+let rec inner x y = 
+    match x,y with 
+    |
+
+(*
 6. Given an m-by-n matrix A and an n-by-p matrix B, the product of A and B is an m-by-p matrix whose entry in 
 position (i,j) is the inner product of row i of A with column j of B. For example,
                   / 0 1 \
@@ -190,9 +207,10 @@ position (i,j) is the inner product of row i of A with column j of B. For exampl
     Hint: Use transpose (from Problem Set 1), inner, and List.map.
 *)
 
-let rec transpose = function
-    | [[];_] -> []
-    | m -> List.map List.head m :: transpose(List.map List.tail m)
+let rec transpose x = 
+    match x with 
+    | x -> x
+    | x -> List.map List.head x:: transpose(List.map List.tail x)
 
 let multiply x y = function
 
