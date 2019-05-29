@@ -247,10 +247,10 @@ let rec inner x y =
     | _, [] -> failwith ("Vector lists are not of the same length")
     | x::xs, y::ys -> x * y + inner xs ys
 
-let rec multiply matrix =
-    match matrix with 
-    | _, [y] -> y
-    | [x], _ -> x
+let rec multiply m =
+    match m with 
+    | _, [] -> []
+    | [], _ -> []
     | x::xs,y::ys -> 
         let newList = transpose ys
         let prodList = List.map (fun y -> inner x y) newList
