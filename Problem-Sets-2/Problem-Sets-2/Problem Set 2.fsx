@@ -177,7 +177,7 @@ T -> i
    i
 
 *)
-type TERMINAL = ID|ADD|SUB|MUL|DIV|LPAREN|RPAREN|EOF
+type TERMINAL2 = ID|ADD|SUB|MUL|DIV|LPAREN|RPAREN|EOF
 
 let eat token = function
     | [] -> failwith "premature termination of input"
@@ -192,8 +192,8 @@ let rec E = function
     | [] -> failwith "premature termination of input"
     | x::xs ->
         match x with 
-        | ID -> xs
-        | ADD -> xs |> T |> E
+        | ID -> xs |> E
+        | ADD -> xs |> T
         | _ -> failwith (sprintf "E: got %A" x)
 
 let accept() = printfn("Input accepted")
