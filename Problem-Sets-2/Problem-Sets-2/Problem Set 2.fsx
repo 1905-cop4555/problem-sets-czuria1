@@ -194,8 +194,9 @@ let test_program program =
           | [] -> failwith "Early termination or missing EOF"
           | x::xs -> if x = EOF then accept() else error()
 
-// 1 + 2 + 3 + 4 + 5
 test_program [ID;ADD;ID;ADD;ID;ADD;ID;EOF]
+test_program [ID;SUB;ID;MUL;ID;EOF]
+test_program [LPAREN;ID;SUB;ID;RPAREN;MUL;ID;EOF] 
 
 (*
 5. Given vectors u = (u1, u2,..., un) and v = (v1, v2,..., vn), the inner product of u and v is defined to be u1*v1 + u2*v2 + ... + u n*vn. 
