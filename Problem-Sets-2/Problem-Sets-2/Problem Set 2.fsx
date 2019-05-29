@@ -302,7 +302,26 @@ last [1; 2; 3; 4; 5]
 10. Interpreter 0 In this problem, we begin our exploration of the use of F# for language-oriented programming. 
     You will write an F# program to evaluate arithmetic expressions written in the language given by the following context-free grammar:
     E -> n | -E | E + E | E - E | E * E | E / E | (E)
-  *)
+*)
+
+type Exp =
+    Num of int
+  | Neg of Exp
+  | Sum of Exp * Exp
+  | Diff of Exp * Exp
+  | Prod of Exp * Exp
+  | Quot of Exp * Exp
+
+type 'a option = None | Some of 'a
+
+let rec evaluate = function
+    | Num n -> Some n
+    | Neg x ->
+        match x with 
+        | Some x -> Some -x
+    | Sum x,y ->
+        match x,y with 
+        | _ , None -> None
 
 (*
 11. Record
