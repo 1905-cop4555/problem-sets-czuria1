@@ -310,13 +310,17 @@ multiply ([[1;2;3];[4;5;6]], [[0;1];[3;2];[1;2]])
 *)
 
 let rec fold f a = function
-        | []    -> a
-        | x::xs -> fold f (f a x) xs
+        | []    -> a                    // O(1)
+        | x::xs -> fold f (f a x) xs    // O(n + 1) * O(n + 1) = n^2 + 1
+
+// O(1) * O(n^2 + 1) = O(n^2)
 
 let rec foldBack f xs a =
           match xs with
-          | []    -> a
-          | y::ys -> f y (foldBack f ys a)
+          | []    -> a                      // O(1)
+          | y::ys -> f y (foldBack f ys a)  // O(n + 1)
+
+// O(1) * O(n + 1) = O(n)
 
 let flatten1 xs = fold (@) [] xs
 
