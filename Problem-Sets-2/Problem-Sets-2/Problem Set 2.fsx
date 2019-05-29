@@ -325,26 +325,28 @@ let rec evaluate = function
         | _, None -> None
         | None, _ -> None
         | Some x, Some y -> Some (x + y)
-    | Diff (x,y) ->
-        match evaluate x, evaluate y with 
-        | _, None -> None
-        | None, _ -> None
-        | Some x, Some y -> Some (x - y) 
-    | Prod (x,y) ->
-        match evaluate x, evaluate y with 
-         | _, None -> None
-         | None, _ -> None
-         | Some x, Some y -> Some (x * y)  
-    | Quot (x,y) ->
-        match evaluate x, evaluate y with 
-         | _, None -> None
-         | None, _ -> None
-         | Some x1, Some y1 ->
-             if evaluate y = Some 0 then None
-             else match evaluate x, evaluate y with 
-                 | _, None -> None
-                 | None, _ -> None
-                 | Some x, Some y -> Some (x / y)
+    //| Diff (x,y) ->
+    //    match evaluate x, evaluate y with 
+    //    | _, None -> None
+    //    | None, _ -> None
+    //    | Some x, Some y -> Some (x - y) 
+    //| Prod (x,y) ->
+    //    match evaluate x, evaluate y with 
+    //     | _, None -> None
+    //     | None, _ -> None
+    //     | Some x, Some y -> Some (x * y)  
+    //| Quot (x,y) ->
+        //match evaluate x, evaluate y with 
+         //| _, None -> None
+         //| None, _ -> None
+         //| Some x1, Some y1 ->
+             //if evaluate y = Some 0 then None
+             //else match evaluate x, evaluate y with 
+                 //| _, None -> None
+                 //| None, _ -> None
+                 //| Some x, Some y -> Some (x / y)
+
+evaluate(Neg(Sum(Num 2, Num 2)))
 
 evaluate (Prod(Num 3, Diff(Num 5, Num 1)))
 evaluate (Diff(Num 3, Quot(Num 5, Prod(Num 7, Num 0))))
