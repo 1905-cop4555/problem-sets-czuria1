@@ -194,7 +194,10 @@ let rec E = function
         | ADD -> xs |> T
         | SUB -> xs |> T
         | _ -> failwith (sprintf "E: got %A" x)
-and T = eat ID
+and T = function
+    | MUL::xs -> xs |> F
+    | DIV::xs -> xs |> F
+and F = eat ID
 
 let accept() = printfn("Input accepted")
 let error() = printfn("Input error")
