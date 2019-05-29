@@ -63,6 +63,10 @@ coord_operator (+) coor1
 coord_operator (+) coor2
 coord_operator (+) coor3
 
+coord_operator (-) coor1
+coord_operator (-) coor2
+coord_operator (-) coor3
+
 
 (*
 3. In the Notes on Programming Language Syntax page, an example syntax checker for a simple language is given, using C syntax. Write the syntax checker using F#, but you may only use functional programming and immutable date.
