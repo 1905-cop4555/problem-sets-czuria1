@@ -456,6 +456,12 @@ let rec delete n = function
 
 type TERMINAL = IF|THEN|ELSE|BEGIN|END|PRINT|SEMICOLON|ID|EOF
 
+type parse_tree = 
+    | Lf of TERMINAL
+    | Sub of parse_tree * parse_tree * parse_tree
+    | Branch of parse_tree * parse_tree
+
+
 let eat token = function
     | [] -> failwith "premature termination of input"
     | x::xs ->
@@ -473,7 +479,12 @@ let rec S = function
             | SEMICOLON::xs -> xs |> S |> L xs
             | _ -> failwith (sprintf "L: got %A" tok)
         match x with  
-        | IF -> xs |> E |> eat THEN |> S |> eat ELSE |> S
+        | IF -> 
+            let (S_tree, remain) = xs |> E 
+            let remain = eat THEN |> S |> eat ELSE |> S
+            if S_tree = None
+            then (Some (Branch (Lf(IF), Lf(BEGIN))), remain)
+
         | BEGIN -> xs |> S |> L xs
         | PRINT -> xs |> E
         | _ -> failwith (sprintf "S: got %A" x)
@@ -486,3 +497,16 @@ let test_program program =
           match result with 
           | [] -> failwith "Early termination or missing EOF"
           | x::xs -> if x = EOF then accept() else error()
+
+
+type 'a tree = 
+    | Lf
+    | Br of 'a * 'a tree * 'a tree
+
+let buildTree = function
+    | [] -> Lf(ERROR)
+    | xs -> let (S_tree, tokens) = xs |> S
+            if tokens <> [EOF] || S_tree = None
+            then printfn "Want [EOF], got %A" tokens 
+                Lf(ERROR) // currently get an error
+            else S_tree.Value
