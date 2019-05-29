@@ -484,7 +484,7 @@ let rec S = function
             let remain = eat THEN |> S |> eat ELSE |> S
             if S_tree = None
             then (Some (Branch (Lf(IF), Lf(BEGIN))), remain)
-
+            else (Some (Sub (Lf(IF), S_tree.Value, LF(ELSE))), remain)
         | BEGIN -> xs |> S |> L xs
         | PRINT -> xs |> E
         | _ -> failwith (sprintf "S: got %A" x)
