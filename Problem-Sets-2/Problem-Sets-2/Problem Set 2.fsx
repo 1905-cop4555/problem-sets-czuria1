@@ -94,45 +94,45 @@ coord_operator (-) coor3
     Print an accept message when the input is valid and completely consumed. Generate appropriate error messages for incorrect symbols, not enough input, and too much input.
 *)
 
-//type TERMINAL = IF|THEN|ELSE|BEGIN|END|PRINT|SEMICOLON|ID|EOF
+type TERMINAL = IF|THEN|ELSE|BEGIN|END|PRINT|SEMICOLON|ID|EOF
 
-//let eat token = function
-//    | [] -> failwith "premature termination of input"
-//    | x::xs ->
-//        if x = token
-//        then xs
-//        else failwith (sprintf "want %A, got %A" token x)
+let eat token = function
+    | [] -> failwith "premature termination of input"
+    | x::xs ->
+        if x = token
+        then xs
+        else failwith (sprintf "want %A, got %A" token x)
 
-//let E = eat ID
+let E = eat ID
 
-//let rec S = function
-//    | [] -> failwith "premature termination of input"
-//    | x::xs ->
-//        let rec L tok = function
-//            | END::xs -> xs 
-//            | SEMICOLON::xs -> xs |> S |> L xs
-//            | _ -> failwith (sprintf "L: got %A" tok)
-//        match x with  
-//        | IF -> xs |> E |> eat THEN |> S |> eat ELSE |> S
-//        | BEGIN -> xs |> S |> L xs
-//        | PRINT -> xs |> E
-//        | _ -> failwith (sprintf "S: got %A" x)
+let rec S = function
+    | [] -> failwith "premature termination of input"
+    | x::xs ->
+        let rec L tok = function
+            | END::xs -> xs 
+            | SEMICOLON::xs -> xs |> S |> L xs
+            | _ -> failwith (sprintf "L: got %A" tok)
+        match x with  
+        | IF -> xs |> E |> eat THEN |> S |> eat ELSE |> S
+        | BEGIN -> xs |> S |> L xs
+        | PRINT -> xs |> E
+        | _ -> failwith (sprintf "S: got %A" x)
 
-//let accept() = printfn("Input accepted")
-//let error() = printfn("Current general error message")
+let accept() = printfn("Input accepted")
+let error() = printfn("Current general error message")
 
-//let test_program program =
-//          let result = program |> S
-//          match result with 
-//          | [] -> failwith "Early termination or missing EOF"
-//          | x::xs -> if x = EOF then accept() else error()
+let test_program program =
+          let result = program |> S
+          match result with 
+          | [] -> failwith "Early termination or missing EOF"
+          | x::xs -> if x = EOF then accept() else error()
 
-//test_program [IF;ID;THEN;BEGIN;PRINT;ID;SEMICOLON;PRINT;ID;END;ELSE;PRINT;ID;EOF]
+test_program [IF;ID;THEN;BEGIN;PRINT;ID;SEMICOLON;PRINT;ID;END;ELSE;PRINT;ID;EOF]
 
-//test_program [IF;ID;THEN;IF;ID;THEN;PRINT;ID;ELSE;PRINT;ID;ELSE;BEGIN;PRINT;ID;END;EOF]
+test_program [IF;ID;THEN;IF;ID;THEN;PRINT;ID;ELSE;PRINT;ID;ELSE;BEGIN;PRINT;ID;END;EOF]
 
-//// did get an error
-//test_program [IF;ID;THEN;BEGIN;PRINT;ID;SEMICOLON;PRINT;ID;SEMICOLON;END;ELSE;PRINT;ID;EOF]
+// did get an error
+test_program [IF;ID;THEN;BEGIN;PRINT;ID;SEMICOLON;PRINT;ID;SEMICOLON;END;ELSE;PRINT;ID;EOF]
 
 
 (*
@@ -192,7 +192,7 @@ let rec E = function
     | [] -> failwith "premature termination of input"
     | x::xs ->
         match x with 
-        | ID -> xs |> E
+        | ID -> xs
         | ADD -> xs |> T |> E
         | _ -> failwith (sprintf "E: got %A" x)
 
@@ -450,6 +450,39 @@ let rec delete n = function
 
 (*
 13. Building Parse Trees
-    Modify problem 2 so that it builds a parse tree as it processes input. On valid input, display the generated tree.
     Modify problem 3 so that it builds a parse tree as it processes input. On valid input, display the generated tree.
+    Modify problem 4 so that it builds a parse tree as it processes input. On valid input, display the generated tree.
 *)
+
+type TERMINAL = IF|THEN|ELSE|BEGIN|END|PRINT|SEMICOLON|ID|EOF
+
+let eat token = function
+    | [] -> failwith "premature termination of input"
+    | x::xs ->
+        if x = token
+        then xs
+        else failwith (sprintf "want %A, got %A" token x)
+
+let E = eat ID
+
+let rec S = function
+    | [] -> failwith "premature termination of input"
+    | x::xs ->
+        let rec L tok = function
+            | END::xs -> xs 
+            | SEMICOLON::xs -> xs |> S |> L xs
+            | _ -> failwith (sprintf "L: got %A" tok)
+        match x with  
+        | IF -> xs |> E |> eat THEN |> S |> eat ELSE |> S
+        | BEGIN -> xs |> S |> L xs
+        | PRINT -> xs |> E
+        | _ -> failwith (sprintf "S: got %A" x)
+
+let accept() = printfn("Input accepted")
+let error() = printfn("Current general error message")
+
+let test_program program =
+          let result = program |> S
+          match result with 
+          | [] -> failwith "Early termination or missing EOF"
+          | x::xs -> if x = EOF then accept() else error()
