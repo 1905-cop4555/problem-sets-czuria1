@@ -317,7 +317,8 @@ type 'a option = None | Some of 'a
 let rec evaluate = function
     | Num n -> Some n
     | Neg x ->
-        match x with 
+        let a = evaluate x
+        match a with 
         | Some x -> Some -x
     | Sum x,y ->
         match x,y with 
