@@ -243,8 +243,6 @@ let rec transpose = function
 let rec inner x y = 
     match x,y with 
     | [], [] -> 0
-    | [], _ -> failwith ("Vector lists are not of the same length")
-    | _, [] -> failwith ("Vector lists are not of the same length")
     | x::xs, y::ys -> x * y + inner xs ys
 
 let rec multiply m =
