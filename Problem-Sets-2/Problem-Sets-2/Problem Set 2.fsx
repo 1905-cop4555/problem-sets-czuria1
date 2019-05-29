@@ -317,12 +317,13 @@ type 'a option = None | Some of 'a
 let rec evaluate = function
     | Num n -> Some n
     | Neg x ->
-        let a = evaluate x
-        match a with 
+        match evaluate x with 
         | Some x -> Some -x
     | Sum x,y ->
-        match x,y with 
-        | _ , None -> None
+        match evaluate x, evaluate y with 
+        | _, None -> None
+        | None, _ -> None
+        | Some x, Some y -> Some x + y
 
 (*
 11. Record
