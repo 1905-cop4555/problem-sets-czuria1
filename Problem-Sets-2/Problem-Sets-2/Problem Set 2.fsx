@@ -458,7 +458,7 @@ let rec delete n = function
     Modify problem 4 so that it builds a parse tree as it processes input. On valid input, display the generated tree.
 *)
 
-type TERMINAL = IF|THEN|ELSE|BEGIN|END|PRINT|SEMICOLON|ID|EOF
+type TERMINAL = IF|THEN|ELSE|BEGIN|END|PRINT|SEMICOLON|ID|EOF|ERROR
 
 type parse_tree = 
     | Lf of TERMINAL
@@ -484,10 +484,10 @@ let rec S = function
             | _ -> failwith (sprintf "L: got %A" tok)
         match x with  
         | IF -> 
-            let (S_tree, remain) = xs |> E 
-            let remain = eat THEN |> S |> eat ELSE |> S
+            let (S_tree, remain) = xs |> S 
+            let remain = remain |> eat THEN |> S |> eat ELSE |> S
             if S_tree = None
-            then (Some (Branch (Lf(IF), Lf(BEGIN))), remain)
+            then (Some (Branch (Lf(IF), Lf(ELSE))), remain)
             else (Some (Sub (Lf(IF), S_tree.Value, LF(ELSE))), remain)
         | BEGIN -> xs |> S |> L xs
         | PRINT -> xs |> E
