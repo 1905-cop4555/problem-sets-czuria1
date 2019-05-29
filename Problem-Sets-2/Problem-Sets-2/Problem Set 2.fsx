@@ -446,8 +446,8 @@ let rec delete n = function
     | Br(m, t1, t2) when n = m ->
         match t1, t2 with 
         | Lf, Lf -> Lf
-        | t1, Lf -> _
-        | t1, t2 -> _
+        | t1, Lf -> Br(_, _, Lf)
+        | t1, t2 -> Br(_, _, Lf)
     | Br(m, t1, t2) ->
         if n < m then Br(m, delete n t1, t2)
         else Br(m, t1, delete n t2)
