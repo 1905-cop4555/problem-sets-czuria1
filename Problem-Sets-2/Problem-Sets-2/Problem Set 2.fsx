@@ -42,7 +42,7 @@ plus3 10
     e. Call the function with (-) for the numeric Coordinates in part (b). Be sure that your function implements the normal associativity for (-).
 *)
 
-type 'a Coordinates = 
+type 'a Coordinate = 
     | Tuple of x: 'a * y: 'a
     | Threeple of x: 'a * y: 'a * z: 'a
     | Fourple of x: 'a * y: 'a * z: 'a * w: 'a
@@ -53,11 +53,13 @@ let coor2 = Threeple(x = 1, y = 2, z = 3)
 let coor3 = Fourple(x = 1, y = 2, z = 3, w = 4)
 
 // function must take in a parameter of a binary function and a Coordinate
-let coord_operator x = 
-    match x with 
-    | _ -> x
+let coord_operator f coor = 
+    match coor with 
+    | Tuple(x,y) -> f x y
+    | Threeple(x,y,z) -> f x (f y z)
+    | Fourple(x,y,z,w) -> f x (f y (f z w))
 
-coord_operator coor1
+coord_operator (+) coor1
 
 
 (*
