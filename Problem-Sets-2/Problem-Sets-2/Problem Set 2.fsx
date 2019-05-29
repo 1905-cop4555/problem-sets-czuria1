@@ -319,7 +319,7 @@ let rec evaluate = function
     | Neg x ->
         match evaluate x with 
         | Some x -> Some -x
-    | Sum x,y ->
+    | Sum (x,y) ->
         match evaluate x, evaluate y with 
         | _, None -> None
         | None, _ -> None
