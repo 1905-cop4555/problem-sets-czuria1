@@ -254,7 +254,7 @@ let rec multiply m =
     | x::xs,y::ys -> 
         let newList = transpose ys
         let prodList = List.map (fun y -> inner x y) newList
-        prodList::matrix(xs,ys)
+        prodList::multiply(xs,ys)
 
 multiply ([[1;2;3];[4;5;6]], [[0;1];[3;2];[1;2]])
 
