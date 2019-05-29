@@ -338,7 +338,7 @@ let rec evaluate = function
         match evaluate x, evaluate y with 
          | _, None -> None
          | None, _ -> None
-         | Some x, Some y ->
+         | Some x1, Some y1 ->
              if evaluate y = Some 0 then None
              else match evaluate x, evaluate y with 
                  | _, None -> None
