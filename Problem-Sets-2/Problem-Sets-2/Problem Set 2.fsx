@@ -149,22 +149,6 @@ test_program [IF;ID;THEN;BEGIN;PRINT;ID;SEMICOLON;PRINT;ID;SEMICOLON;END;ELSE;PR
         test_program [LPAREN;ID;SUB;ID;RPAREN;MUL;ID;EOF] 
 *)
 
-//let rec E = function
-    //| [] -> failwith "premature termination of input"
-    //| x::xs ->
-        //let F = function
-        //    | LPAREN::xs -> xs |> E
-        //    | RPAREN::xs -> xs
-        //    | _ -> failwith (sprintf "F: got %A" x)
-        //let rec T = function
-        //    | MUL::xs -> xs |> T |> F
-        //    | DIV::xs -> xs |> T |> F
-        //    | _ -> failwith (sprintf "T: got %A" x)
-        //match x with 
-        //| ADD -> xs |> E |> T xs
-        //| SUB -> xs |> E |> T xs
-        //| _ -> failwith (sprintf "E: got %A" x)
-
 (*
 E -> E + T | T
 T -> i
@@ -193,6 +177,8 @@ let rec E = function
         | ID -> xs |> E
         | ADD -> xs |> T
         | SUB -> xs |> T
+        | LPAREN -> xs |> E
+        | RPAREN -> xs |> E
         | _ -> failwith (sprintf "E: got %A" x)
 and T = function
     | MUL::xs -> xs |> F
