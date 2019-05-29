@@ -338,7 +338,12 @@ let rec evaluate = function
         match evaluate x, evaluate y with 
          | _, None -> None
          | None, _ -> None
-         | Some x, Some y -> Some (x / y) 
+         | Some x, Some y ->
+             if y = 0 then None
+             else 
+                 | _, None -> None
+                 | None, _ -> None
+                 | Some x, Some y -> Some (x / y)
 (*
 11. Record
     Create a record type for Name, Credits and GPA.
