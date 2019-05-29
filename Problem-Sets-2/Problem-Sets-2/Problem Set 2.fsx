@@ -324,7 +324,21 @@ let rec evaluate = function
         | _, None -> None
         | None, _ -> None
         | Some x, Some y -> Some (x + y)
-
+    | Diff (x,y) ->
+        match evaluate x, evaluate y with 
+        | _, None -> None
+        | None, _ -> None
+        | Some x, Some y -> Some (x - y) 
+    | Prod (x,y) ->
+        match evaluate x, evaluate y with 
+         | _, None -> None
+         | None, _ -> None
+         | Some x, Some y -> Some (x * y)  
+    | Quot (x,y) ->
+        match evaluate x, evaluate y with 
+         | _, None -> None
+         | None, _ -> None
+         | Some x, Some y -> Some (x / y) 
 (*
 11. Record
     Create a record type for Name, Credits and GPA.
