@@ -60,6 +60,8 @@ let coord_operator f coor =
     | Fourple(x,y,z,w) -> f x (f y (f z w))
 
 coord_operator (+) coor1
+coord_operator (+) coor2
+coord_operator (+) coor3
 
 
 (*
