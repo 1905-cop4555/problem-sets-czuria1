@@ -339,11 +339,15 @@ let rec evaluate = function
          | _, None -> None
          | None, _ -> None
          | Some x, Some y ->
-             if y = 0 then None
+             if evalaute y = Some 0 then None
              else 
                  | _, None -> None
                  | None, _ -> None
                  | Some x, Some y -> Some (x / y)
+
+evaluate (Prod(Num 3, Diff(Num 5, Num 1)))
+evaluate (Diff(Num 3, Quot(Num 5, Prod(Num 7, Num 0))))
+
 (*
 11. Record
     Create a record type for Name, Credits and GPA.
@@ -370,7 +374,7 @@ let rec delete n = function
     | Br(m, t1, t2) when n = m -> ?
     | Br(m, t1, t2) ->
         if n < m then Br(m, delete n t1, t2)
-        else Br(m, t1, remove n t2)
+        else Br(m, t1, delete n t2)
 
 (*
 13. Building Parse Trees
