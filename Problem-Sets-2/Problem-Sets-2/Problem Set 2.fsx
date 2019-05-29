@@ -276,6 +276,55 @@ multiply ([[1;2;3];[4;5;6]], [[0;1];[3;2];[1;2]])
 *)
 
 (*
+8. Two powerful List functions provided by F# are List.fold and List.foldBack. These are similar to List.reduce and 
+   List.reduceBack, but more general. Both take a binary function f, an initial value i, and a list [x1;x2;x3;...;xn]. Then List.fold returns
+      (f ... (f (f (f i x1) x2) x3) ... xn)
+    while List.foldBack returns
+      (f x1 (f x2 (f x3 ... (f xn i) ... )))
+    In spite of this complicated behavior, they can be implemented very simply:
+      > let rec fold f a = function
+        | []    -> a
+        | x::xs -> fold f (f a x) xs;;
+
+      val fold : ('a -> 'b -> 'a) -> 'a -> 'b list -> 'a
+
+      > let rec foldBack f xs a =
+          match xs with
+          | []    -> a
+          | y::ys -> f y (foldBack f ys a);;
+
+      val foldBack : ('a -> 'b -> 'b) -> 'a list -> 'b -> 'b
+    (Note that they don't take their arguments in the same order.)
+    Each of these functions can be used to implement flatten, which "flattens" a list of lists:
+
+      let flatten1 xs = fold (@) [] xs
+
+      let flatten2 xs = foldBack (@) xs []
+    For example,
+
+      > flatten1 [[1;2];[];[3];[4;5;6]];;
+      val it : int list = [1; 2; 3; 4; 5; 6]
+    Compare the efficiency of flatten1 xs and flatten2 xs, both in terms of asymptotic time compexity and experimentally. 
+    To make the analysis simpler, assume that xs is a list of the form [[1];[2];[3];...;[n]]. Use your version of fold and 
+    foldBack to experiment with the time complexity.
+*)
+
+let rec fold f a = function
+        | []    -> a
+        | x::xs -> fold f (f a x) xs
+
+let rec foldBack f xs a =
+          match xs with
+          | []    -> a
+          | y::ys -> f y (foldBack f ys a)
+
+let flatten1 xs = fold (@) [] xs
+
+let flatten2 xs = foldBack (@) xs []
+
+flatten1 [[1;2];[];[3];[4;5;6]]
+
+(*
 9. The built-in discriminated union
       type 'a option = None | Some of 'a
     is useful when handling invalid input. For example, a function that returns the last element in a list cannot return an element for the empty list. One possibility is to raise an exception. Another possibility is to use the option discriminated union. When the function is passed an empty list, the function will return None. When a non-empty list is passed to the function, it will return Some x, where x is the last element in the list.
