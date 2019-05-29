@@ -443,7 +443,11 @@ let s = {Name = "Jones"; Credits = 109; GPA = 3.85}
 
 let rec delete n = function
     | Lf -> Lf
-    | Br(m, t1, t2) when n = m -> ?
+    | Br(m, t1, t2) when n = m ->
+        match t1, t2 with 
+        | Lf, Lf -> Lf
+        | t1, Lf -> _
+        | t1, t2 -> _
     | Br(m, t1, t2) ->
         if n < m then Br(m, delete n t1, t2)
         else Br(m, t1, delete n t2)
