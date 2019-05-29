@@ -165,8 +165,18 @@ coord_operator (-) coor3
         //| SUB -> xs |> E |> T xs
         //| _ -> failwith (sprintf "E: got %A" x)
 
-// E -> E + T
-// T -> i
+(*
+E -> E + T | T
+T -> i
+          E
+        / | \
+       E  +  T
+      /       \
+     T         i
+    /
+   i
+
+*)
 type TERMINAL = ID|ADD|SUB|MUL|DIV|LPAREN|RPAREN|EOF
 
 let eat token = function
