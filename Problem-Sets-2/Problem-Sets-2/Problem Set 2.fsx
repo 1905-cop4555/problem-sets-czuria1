@@ -175,7 +175,7 @@ let rec E = function
     | x::xs ->
         match x with 
         | ID -> T
-        | ADD -> xs |> E |> T xs
+        | ADD -> T |> E
         | _ -> failwith (sprintf "E: got %A" x)
 
 let accept() = printfn("Input accepted")
@@ -251,6 +251,10 @@ let rec multiply matrix =
     match matrix with 
     | _, [y] -> y
     | [x], _ -> x
+    | x::xs,y::ys -> 
+        let newList = transpose ys
+        let prodList = List.map (fun y -> inner x y) newList
+        prodList::matrix(xs,ys)
 
 multiply ([[1;2;3];[4;5;6]], [[0;1];[3;2];[1;2]])
 

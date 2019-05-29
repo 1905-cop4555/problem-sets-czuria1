@@ -1,8 +1,8 @@
 ﻿<Properties StartupConfiguration="{C0870E4C-A1EA-4D60-AFA4-19CE32F09CC2}|Default">
   <MonoDevelop.Ide.ItemProperties.Problem-Sets-2 PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="../../Examples/Examples/Class Examples.fsx">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Problem Set 2.fsx">
     <Files>
-      <File FileName="Problem Set 2.fsx" Line="1" Column="1" />
+      <File FileName="Problem Set 2.fsx" Line="22" Column="28" />
       <File FileName="../../Problem-Sets-1/Problem-Sets-1/Problem Set 1.fsx" Line="455" Column="67" />
       <File FileName="../../Examples/Examples/Class Examples.fsx" Line="64" Column="36" />
     </Files>
