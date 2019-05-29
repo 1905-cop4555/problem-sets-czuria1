@@ -186,15 +186,15 @@ let eat token = function
         then xs
         else failwith (sprintf "want %A, got %A" token x)
 
-let T = eat ID
-
 let rec E = function
     | [] -> failwith "premature termination of input"
     | x::xs ->
         match x with 
         | ID -> xs |> E
         | ADD -> xs |> T
+        | SUB -> xs |> T
         | _ -> failwith (sprintf "E: got %A" x)
+and T = eat ID
 
 let accept() = printfn("Input accepted")
 let error() = printfn("Input error")
