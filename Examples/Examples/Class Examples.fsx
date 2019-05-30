@@ -87,3 +87,23 @@ let testoption = function
 testoption Some(15)
 
 testoption None
+
+// pivot for QuickSort
+let rec split pivot = function
+    | []    -> ([],[])
+    | x::xs -> let (left,right) = split pivot xs
+               if x < pivot then (x::left, right)
+                            else (left, x::right)
+
+split 4 [6; 2; 9; 1; 4; 6; 1]
+
+// QuickSort function
+let rec qsort = function
+    | []    -> []
+    | [x]   -> [x]
+    | x::xs -> let (left, right) = split x xs    // x is the pivot
+               qsort left @ x :: qsort right
+
+qsort [3;1;4;1;5;9;2;6;5]
+qsort [3.0; 1.5; 0.6]
+qsort ["fish"; "dinosaur"; "elephant"; "cockatiel"]
