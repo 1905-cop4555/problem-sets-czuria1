@@ -3,6 +3,6 @@
     a. Create a discriminated union that can represent a linked list of integers.
     b. Write a function that converts a list into a linked list of nodes.
 *)
-type 'a tree = 
+type tree = 
     | Empty 
-    | Cons of head:'a * tail:'a tree
+    | Cons of head:int * tail:tree
