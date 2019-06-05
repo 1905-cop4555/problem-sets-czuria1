@@ -124,3 +124,13 @@ interleave ([1;2;3],[4;5;6])
 8. Create a tail-recursive function that has a big integer as input and calculates 2I raised to that power.
     Calculate these powers of 2I: 0I, 1I, 2I, 4I, 16I, 256I, 1024I, 32768I and 65536I.
 *)
+
+let power n =
+    let rec loop a = function 
+        | 0 -> a
+        | n -> loop (2*n) (a-1)
+    loop 1 n
+
+power 2
+
+power 4
