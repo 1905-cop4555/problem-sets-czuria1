@@ -121,6 +121,18 @@ let interleave xs ys =
 interleave ([1;2;3],[4;5;6])
 
 (*
+7. Multiples of a list
+    a. Generate an infinite stream for the the natural numbers greater than zero that are divisible by each element in a 
+    list of four elements. Use four, nested calls of filter on the infinite stream of natural numbers starting at one. 
+    For example the output for the list [2;3;21;10]:
+    210, 420, 630, 840, 1050, ...
+    b. Display the 20th through 30th numbers in the series.
+    c. Repeat the exercise using an infinite sequence. Sequences also have a filter function, so it can be solved similarly 
+    to the infinite stream version. Just for fun, try to solve it without using the filter function.
+    d. For both functions, be sure to dislay an appropriate error message if the list does not have exactly four elements.
+*)
+
+(*
 8. Create a tail-recursive function that has a big integer as input and calculates 2I raised to that power.
     Calculate these powers of 2I: 0I, 1I, 2I, 4I, 16I, 256I, 1024I, 32768I and 65536I.
 *)
