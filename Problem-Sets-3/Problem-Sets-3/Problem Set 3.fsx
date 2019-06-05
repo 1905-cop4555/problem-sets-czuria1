@@ -7,6 +7,10 @@ type tree =
     | Empty 
     | Cons of head:int * tail:tree
 
+let convert = function
+    | [] -> Empty
+    | x::xs -> Cons(head = x, tail = xs)
+
 (*
 2. This CFG recognizes some strings of zeros and ones.
         S → 0A | 1B
