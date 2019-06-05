@@ -69,18 +69,18 @@ let rec convert = function
 4. Using the natural semantics from the lecture notes, show all the steps for verifying each judgement. 
     [When writing derivations, I tend to set a variable to the current state of memory, to save typing. 
     My derivations are six lines, six lines, and 22 lines.]
-    ({i=5; j=8}, i := 2*j + i) => {i=21; j=8}
-    ({i=3; j=8}, if (2*i > j) then i := 2*j else j := 2*i) => {i=3; j=6}
-    ({i=1; j=10}, while (3*i <= j) do i := 3*i) => {i=9; j=10}
+    a. ({i=5; j=8}, i := 2*j + i) => {i=21; j=8}
+    b. ({i=3; j=8}, if (2*i > j) then i := 2*j else j := 2*i) => {i=3; j=6}
+    c. ({i=1; j=10}, while (3*i <= j) do i := 3*i) => {i=9; j=10}
 
-    ({i=5; j=8}, i := 2*j + i) => {i=21; j=8}
+    a. ({i=5; j=8}, i := 2*j + i) => {i=21; j=8}
     1) ({i=5; j=8}, 2*j + i) => {i=21; j=8}
     2) ({i=5; j=8}, 2*j) => 16
     3) ({i=5; j=8}, j) => 8
     4) ({i=5; j=8}, 2) => 2
     5) ({i=5; j=8}, i) => 5
 
-    ({i=3; j=8}, if (2*i > j) then i := 2*j else j := 2*i) => {i=3; j=6}
+    b. ({i=3; j=8}, if (2*i > j) then i := 2*j else j := 2*i) => {i=3; j=6}
     1) ({i=3; j=8}, j := 2*i) => {i=3; j=6}
     2) ({i=3; j=8}, 2) => 2
     3) ({i=3; j=8}, i) => 3
@@ -117,5 +117,10 @@ let interleave xs ys =
         | [], ys -> ys
         | x::xs, y::ys ->
 
-    
+
 interleave ([1;2;3],[4;5;6])
+
+(*
+8. Create a tail-recursive function that has a big integer as input and calculates 2I raised to that power.
+    Calculate these powers of 2I: 0I, 1I, 2I, 4I, 16I, 256I, 1024I, 32768I and 65536I.
+*)
