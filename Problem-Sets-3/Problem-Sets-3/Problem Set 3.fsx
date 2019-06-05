@@ -32,3 +32,9 @@ let rec convert = function
     list1 = [1..2..19999], list2 = [2..2..20000]
     list1 = [1..2..199999], list2 = [2..2..200000]
 *)
+
+let rec interleave = function
+    | [], [] -> []
+    | xs, [] -> xs
+    | [], ys -> ys
+    | x::xs, y::ys -> x::y::interleave(xs,ys)
