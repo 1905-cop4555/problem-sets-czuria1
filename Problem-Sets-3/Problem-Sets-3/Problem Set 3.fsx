@@ -132,6 +132,19 @@ interleave ([1;2;3],[4;5;6])
     d. For both functions, be sure to dislay an appropriate error message if the list does not have exactly four elements.
 *)
 
+type 'a stream = Cons of 'a * (unit -> 'a stream)
+
+let rec upfrom n = Cons(n, fun () -> upfrom(n+1))
+
+let rec filter p (Cons(x, xsf)) =
+  if p x then Cons(x, fun () -> filter p (xsf()))
+         else filter p (xsf())
+
+let rec eratosthenes (Cons(x, xsf)) =
+  Cons(x, fun () -> eratosthenes (filter (fun n -> n%x <> 0) (xsf())))
+
+let numbers = eratosthenes (upfrom 2)
+
 (*
 8. Create a tail-recursive function that has a big integer as input and calculates 2I raised to that power.
     Calculate these powers of 2I: 0I, 1I, 2I, 4I, 16I, 256I, 1024I, 32768I and 65536I.
