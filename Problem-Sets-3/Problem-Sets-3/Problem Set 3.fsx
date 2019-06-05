@@ -39,10 +39,13 @@ let rec nonTailInterleave = function
     | [], ys -> ys
     | x::xs, y::ys -> x::y::nonTailInterleave(xs,ys)
 
-let rec interleave = function
-    | [], [] -> []
-    | xs, [] -> xs
-    | [], ys -> ys
-    | x::xs, y::ys -> x::(y::interleave(xs,ys))
+let interleave xs ys = 
+    let rec aux xs ys a = 
+        match xs, ys with 
+        | [], [] -> a
+        | x::xs, [] -> 
+        | [], ys -> ys
+        | x::xs, y::ys ->
+
     
 interleave ([1;2;3],[4;5;6])
