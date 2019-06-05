@@ -33,8 +33,16 @@ let rec convert = function
     list1 = [1..2..199999], list2 = [2..2..200000]
 *)
 
+let rec nonTailInterleave = function
+    | [], [] -> []
+    | xs, [] -> xs
+    | [], ys -> ys
+    | x::xs, y::ys -> x::y::nonTailInterleave(xs,ys)
+
 let rec interleave = function
     | [], [] -> []
     | xs, [] -> xs
     | [], ys -> ys
-    | x::xs, y::ys -> x::y::interleave(xs,ys)
+    | x::xs, y::ys -> x::(y::interleave(xs,ys))
+    
+interleave ([1;2;3],[4;5;6])
