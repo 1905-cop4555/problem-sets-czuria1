@@ -19,6 +19,39 @@ let rec convert = function
     a. Describe the strings that the CFG recognizes.
     b. This language is ambiguous. Find a string that is recognized by this grammar which has two derivations.
     c. Show the two derivation trees for the string in part (b).
+
+    b. 00101011
+
+    c. 
+            S
+           / \
+          0   A
+            / |  \
+           0  A    A
+              |  / |  \
+              1 0  A    A
+                   |  / | \
+                   1 0  A  A
+                        |  | 
+                        1  1
+
+            S
+           / \
+          0   A
+            / |   \
+           0  A      A
+             / \     |
+            1   S    1
+               / \
+              0   A
+                 / \
+                1   S
+                   / \
+                  0   A
+                      |
+                      1
+
+
 *)
 
 (*
