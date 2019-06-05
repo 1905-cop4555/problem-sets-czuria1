@@ -107,3 +107,10 @@ let rec qsort = function
 qsort [3;1;4;1;5;9;2;6;5]
 qsort [3.0; 1.5; 0.6]
 qsort ["fish"; "dinosaur"; "elephant"; "cockatiel"]
+
+// Accumulation Tail Recursion
+let rec accfact = function
+    | (0,a) -> a
+    | (n, a) -> accfact(n-1, n*a)
+
+let factorial n = accfact(n,1)
