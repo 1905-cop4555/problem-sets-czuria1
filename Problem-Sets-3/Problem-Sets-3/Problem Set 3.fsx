@@ -66,6 +66,15 @@ let rec convert = function
 *)
 
 (*
+4. Using the natural semantics from the lecture notes, show all the steps for verifying each judgement. 
+    [When writing derivations, I tend to set a variable to the current state of memory, to save typing. 
+    My derivations are six lines, six lines, and 22 lines.]
+    ({i=5; j=8}, i := 2*j + i) => {i=21; j=8}
+    ({i=3; j=8}, if (2*i > j) then i := 2*j else j := 2*i) => {i=3; j=6}
+    ({i=1; j=10}, while (3*i <= j) do i := 3*i) => {i=9; j=10}
+*)
+
+(*
 5. Write a tail-recursive F# function interleave(xs,ys) that interleaves two lists:
       > interleave ([1;2;3],[4;5;6]);;
                 val it : int list = [1; 4; 2; 5; 3; 6] 
