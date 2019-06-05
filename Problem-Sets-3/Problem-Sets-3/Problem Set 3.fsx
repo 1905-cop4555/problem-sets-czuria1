@@ -22,6 +22,17 @@ let rec convert = function
 *)
 
 (*
+3. A palindrome is a word that is spelled the same backwards as forwards. Our palindromes will have a vertical bar in 
+    the middle, to separate the first half from the second half. If we restrict the alphabet to {a, b, |}, then some 
+    example palindromes are a|a, b|b, ab|ba, ba|ab, aaab|baaa, ....
+
+    a. Write a CFG to recognize palindromes over the alphabet {a, b, |}, with the bar in the middle.
+    b. Write a parse function that accepts a string and generates tokens for the language.
+    c. Write a syntax checker that verifies if a list of tokens represents a palindrome.
+    d. Extend the syntax checker so it generates an abstract syntax tree and displays it, for valid palindromes.
+*)
+
+(*
 5. Write a tail-recursive F# function interleave(xs,ys) that interleaves two lists:
       > interleave ([1;2;3],[4;5;6]);;
                 val it : int list = [1; 4; 2; 5; 3; 6] 
