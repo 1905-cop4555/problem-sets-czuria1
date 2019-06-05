@@ -128,9 +128,9 @@ interleave ([1;2;3],[4;5;6])
 let power n =
     let rec loop a = function 
         | 0 -> a
-        | n -> loop (2*n) (a-1)
-    loop 1 n
+        | n -> loop (2I*n) (a-1I)
+    loop 1I n
 
-power 2
+power 2I
 
-power 4
+power 4I
