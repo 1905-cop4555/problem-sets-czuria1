@@ -159,3 +159,7 @@ let power n =
 power 2I
 
 power 4I
+
+(*
+10. Write a non-recursive fibonacci function using imperative F#.Compare the timing with a tail-recursive fibonacci.
+*)
