@@ -116,3 +116,27 @@ let rec accfact = function
 let factorial n = accfact(n,1)
 
 factorial 5
+
+// Inifinte Streams
+type 'a stream = Cons of 'a * (unit -> 'a stream)
+
+let rec upfrom n = Cons(n, fun () -> upfrom(n+1))
+
+let rec take n (Cons(x, xsf)) =
+  if n = 0 then []
+           else x :: take (n-1) (xsf())
+           
+let rec drop n (Cons (x, xsf)) =
+  if n = 0 then Cons (x, xsf)
+           else drop (n-1) (xsf())
+         
+let rec filter p (Cons(x, xsf)) =
+  if p x then Cons(x, fun () -> filter p (xsf()))
+         else filter p (xsf())
+ 
+let rec eratosthenes (Cons(x, xsf)) =
+  Cons(x, fun () -> eratosthenes (filter (fun n -> n%x <> 0) (xsf())))
+  
+let primes = eratosthenes (upfrom 2)
+
+primes |> drop 9999 |> take 10
