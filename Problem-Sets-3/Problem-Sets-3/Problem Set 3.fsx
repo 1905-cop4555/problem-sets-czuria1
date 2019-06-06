@@ -163,3 +163,17 @@ power 4I
 (*
 10. Write a non-recursive fibonacci function using imperative F#.Compare the timing with a tail-recursive fibonacci.
 *)
+
+let fib n =
+    let fib1 = 1
+    let fib2 = 1
+    let fibNum = fib1
+    for i = 1 to n do 
+        fibNum = fib1 + fib2
+        fib1 = fib2
+        fib2 = fibNum
+    fibNum 
+
+fib 5 
+
+    
