@@ -185,7 +185,13 @@ power 2I
 power 4I
 
 (*
-10. Write a non-recursive fibonacci function using imperative F#.Compare the timing with a tail-recursive fibonacci.
+10. List the steps that F# follows to determine the type for f: (fun f -> f (f 17.3)).
+
+    (float -> float) -> float
+*)
+
+(*
+11. Write a non-recursive fibonacci function using imperative F#.Compare the timing with a tail-recursive fibonacci.
 *)
 
 let fib n =
