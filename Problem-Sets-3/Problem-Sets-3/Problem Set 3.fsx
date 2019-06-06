@@ -68,6 +68,15 @@ let rec convert = function
     S → aSa | bSb | a | b "|"
 *)
 
+type TERMINAL = A|B
+
+let eat token = function
+    | [] -> failwith "premature termination of input"
+    | x::xs ->
+        if x = token
+        then xs
+        else failwith (sprintf "want %A, got %A" token x)
+
 (*
 4. Using the natural semantics from the lecture notes, show all the steps for verifying each judgement. 
     [When writing derivations, I tend to set a variable to the current state of memory, to save typing. 
