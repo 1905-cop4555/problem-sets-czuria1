@@ -140,6 +140,10 @@ interleave ([1;2;3],[4;5;6])
    c. Repeat the exercise using an infinite stream.
 *)
 
+let rec sequence n = function
+    | 1 -> 1
+    | n -> ...
+
 (*
 7. Multiples of a list
     a. Generate an infinite stream for the the natural numbers greater than zero that are divisible by each element in a 
