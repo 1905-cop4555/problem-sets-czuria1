@@ -63,6 +63,9 @@ let rec convert = function
     b. Write a parse function that accepts a string and generates tokens for the language.
     c. Write a syntax checker that verifies if a list of tokens represents a palindrome.
     d. Extend the syntax checker so it generates an abstract syntax tree and displays it, for valid palindromes.
+
+    a. 
+    S → aSa | bSb | a | b "|"
 *)
 
 (*
