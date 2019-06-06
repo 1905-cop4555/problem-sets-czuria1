@@ -65,7 +65,7 @@ let rec convert = function
     d. Extend the syntax checker so it generates an abstract syntax tree and displays it, for valid palindromes.
 
     a. 
-    S → aSa | bSb | a | b "|"
+    S → aSa | bSb | "|"
 *)
 
 type TERMINAL = A|B
