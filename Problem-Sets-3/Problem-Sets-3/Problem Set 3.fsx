@@ -133,6 +133,14 @@ let interleave xs ys =
 interleave ([1;2;3],[4;5;6])
 
 (*
+6. Alternating series
+   a. Generate an infinite sequence for the alternating series of 1/(2**n):
+    1/2, -1/4, 1/8, -1/16, 1/32, -1/64, ...
+   b. Display the 5th through 15th numbers in the series. The numbers should display as the floating point version of the fractions.
+   c. Repeat the exercise using an infinite stream.
+*)
+
+(*
 7. Multiples of a list
     a. Generate an infinite stream for the the natural numbers greater than zero that are divisible by each element in a 
     list of four elements. Use four, nested calls of filter on the infinite stream of natural numbers starting at one. 
