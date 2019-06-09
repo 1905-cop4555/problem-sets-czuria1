@@ -160,14 +160,13 @@ type 'a stream = Cons of 'a * (unit -> 'a stream)
 
 let rec upfrom n = Cons(n, fun () -> upfrom(n+1))
 
-let rec filter p (Cons(x, xsf)) =
-  if p x then Cons(x, fun () -> filter p (xsf()))
-         else filter p (xsf())
+let nats = upfrom 1
 
-let rec eratosthenes (Cons(x, xsf)) =
-  Cons(x, fun () -> eratosthenes (filter (fun n -> n%x <> 0) (xsf())))
+let rec take n (Cons(x, xsf)) = 
+    if n = 1 then []
+    else x :: take (n-1) (xsf()) 
 
-let numbers = eratosthenes (upfrom 2)
+let numbers = take 10 nats
 
 (*
 8. Create a tail-recursive function that has a big integer as input and calculates 2I raised to that power.
