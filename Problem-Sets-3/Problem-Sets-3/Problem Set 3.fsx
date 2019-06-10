@@ -325,8 +325,18 @@ let stack1 = mkstack [1]
 [<Measure>] type milliseconds
 [<Measure>] type nanoseconds
 
-let micro = 0.000001<seconds>
-let milli = 0.001<seconds>
-let nano = 0.000000001<seconds>
+let micro = 0.000001<seconds/microseconds>
+let milli = 0.001<seconds/milliseconds>
+let nano = 0.000000001<seconds/nanoseconds>
 
+let convertSecToMicro s = 
+    micro * s
+
+let convertSecToMilli s = 
+    milli * s
+
+let convertSecToNano s = 
+    nano * s
+
+let sec1 = convertSecToMicro 5.0<seconds>
     
