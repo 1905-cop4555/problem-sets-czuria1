@@ -224,6 +224,14 @@ power 4I
     thrice twice successor 0
 *)
 
+//let twice f = (fun x -> f (f x))
+
+let twice f = f << f
+
+let successor n = n+1
+
+(twice (twice (twice (twice successor)))) 0
+
 (*
 10. List the steps that F# follows to determine the type for f: (fun f -> f (f 17.3)).
 
