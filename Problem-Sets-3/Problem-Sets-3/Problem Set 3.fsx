@@ -310,4 +310,14 @@ let stack1 = mkstack [1]
 
 (* Problem 16 *)
 
+(*
+18. Measures
+    a. Declare type measures for seconds, microseconds, millseconds, and nanoseconds.
+    b. Declare constants for the number of seconds in each of the other types.
+    c. Create functions that convert seconds to each of the other types. What is the principal type of each function?
+    d. Create functions that convert each of the other types to seconds. What is the principal type of each function?
+    e. Convert 5000 milliseconds to seconds and then to microseconds.
+    f. Convert 0.00000009 seconds to microseconds and to nanoseconds.
+*)
+
     
