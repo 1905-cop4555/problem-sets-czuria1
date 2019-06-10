@@ -248,7 +248,7 @@ let mkstack init =
         (fun () -> List.head (!stk)), // top
         (fun () -> List.isEmpty (!stk))) // isEmpty
 
-mkstack [1]
+let stack1 = mkstack [1]
 
 (* Problem 16 *)
 
