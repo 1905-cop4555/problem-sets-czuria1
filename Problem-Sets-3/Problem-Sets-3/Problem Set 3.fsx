@@ -221,8 +221,8 @@ fib 7
 
 (*
 12. Using imperative F#, create a record type for a student. The record will have a function that returns the student's 
-GPA, a function that adds credit hours and a function that adds grade points. Initialize an instance of the record with 
-appropriate functions and values. Use the instance to add grade points and credits several times, and display the GPA.
+    GPA, a function that adds credit hours and a function that adds grade points. Initialize an instance of the record with 
+    appropriate functions and values. Use the instance to add grade points and credits several times, and display the GPA.
 *)
 
 type Student = {gpa: unit -> float; credits: float -> unit; grade: float -> unit}
@@ -234,6 +234,12 @@ let s1 =
     {gpa = fun () -> !avg; credits = fun c -> cred := !cred + c; grade = fun p -> pts := !pts + p}
 
 //s1.gpa ()
+
+(*
+13. Using imperative F#, create a tuple for an integer stack, including push, pop, top and isEmpty functions. Use the 
+    stack to implement factorial. Use a loop to push all the values from 1 through the parameter, then use another loop to 
+    pop the values and calculate factorial. Compare the timing with a tail-recursive factorial.
+*)
 
 (* Problem 16 *)
 
