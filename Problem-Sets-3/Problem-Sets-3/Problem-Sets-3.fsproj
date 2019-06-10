@@ -46,9 +46,9 @@
     <Compile Include="AssemblyInfo.fs" />
     <Compile Include="Program.fs" />
     <None Include="packages.config" />
-    <None Include="Problem Set 3.fsx" />
     <Compile Include="parser.fs" />
     <Compile Include="pcf.fs" />
+    <None Include="Problem Set 3.fsx" />
   </ItemGroup>
   <Import Project="$(FSharpTargetsPath)" />
 </Project>
