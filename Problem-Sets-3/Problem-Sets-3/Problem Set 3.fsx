@@ -77,6 +77,14 @@ let eat token = function
         then xs
         else failwith (sprintf "want %A, got %A" token x)
 
+let rec S = function
+    | [] -> failwith "premature termination of input"
+    | x::xs ->
+        match x with
+        | A -> xs
+        | B -> xs
+        | _ -> failwith (sprintf "S: got %A" x)
+
 (*
 4. Using the natural semantics from the lecture notes, show all the steps for verifying each judgement. 
     [When writing derivations, I tend to set a variable to the current state of memory, to save typing. 
