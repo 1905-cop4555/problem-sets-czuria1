@@ -192,6 +192,39 @@ power 2I
 power 4I
 
 (*
+9. An interesting higher-order function is twice, which can be defined by
+    > let twice f = (fun x -> f (f x));
+      val twice : ('a -> 'a) -> 'a -> 'a 
+    or, using F#'s function composition operator <<, by
+    > let twice f = f << f;;
+      val twice : ('a -> 'a) -> ('a -> 'a)
+    If we also define
+    > let successor n = n+1;;
+      val successor : int -> int
+    then we can evaluate expressions like
+    > (twice (twice (twice (twice successor)))) 0;;
+      val it : int = 16  
+    It is pretty easy to see that with k occurrences of twice, these expressions will return 2^k.
+    Remarkably, F# also allows us to evaluate expressions like
+
+      twice twice twice twice successor 0
+    in which the function applications are associated to the left, by F#'s default parsing conventions. (Notice that 
+  this means that twice gets applied to itself!) Can you figure out a formula that gives the value of
+
+      twice twice twice ... twice successor 0
+    when there are k occurrences of twice? (I suggest that you approach this problem experimentally.)
+
+    Consider a similar function named thrice
+
+    let thrice f = f << f << f
+    Can you predicte the output of
+
+    thrice thrice successor 0
+    twice thrice successor 0
+    thrice twice successor 0
+*)
+
+(*
 10. List the steps that F# follows to determine the type for f: (fun f -> f (f 17.3)).
 
     (float -> float) -> float
