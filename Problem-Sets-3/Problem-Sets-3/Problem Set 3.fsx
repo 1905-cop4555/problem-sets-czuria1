@@ -225,13 +225,13 @@ GPA, a function that adds credit hours and a function that adds grade points. In
 appropriate functions and values. Use the instance to add grade points and credits several times, and display the GPA.
 *)
 
-type Student = {gpa: unit -> float}
+type Student = {gpa: unit -> float; credits: float -> unit; grade: float -> unit}
 
 let s1 =
     let cred = ref 4.00
     let pts = ref 0.0
-    let avg = ref (!pts * !cred)
-    {gpa = fun () -> !avg}
+    let avg = ref 4.00
+    {gpa = fun () -> !avg; credits = fun c -> cred := !cred + c; grade = fun p -> pts := !pts + p}
 
 //s1.gpa ()
 
