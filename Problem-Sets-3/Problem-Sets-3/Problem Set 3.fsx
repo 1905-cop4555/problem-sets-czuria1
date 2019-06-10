@@ -250,6 +250,17 @@ let mkstack init =
 
 let stack1 = mkstack [1]
 
+(*
+14. Refer to the lecture on types and the subset of the C language that was used. Perform a type derivation to verify 
+    that the following code is well-typed.
+    { int *x;
+      int a[15];
+
+      *x = 7;
+      a[*x] = *x + 4;
+    }
+*)
+
 (* Problem 16 *)
 
     
