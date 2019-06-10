@@ -140,9 +140,11 @@ interleave ([1;2;3],[4;5;6])
    c. Repeat the exercise using an infinite stream.
 *)
 
-let rec sequence n = function
-    | 1 -> 1
-    | n -> ...
+let series n = seq { for a in 1 .. n do yield (pown -1 (a+1))*(pown 2 a)}
+
+let seq1 = series 5
+
+printfn "%A" seq1
 
 (*
 7. Multiples of a list
