@@ -320,4 +320,9 @@ let stack1 = mkstack [1]
     f. Convert 0.00000009 seconds to microseconds and to nanoseconds.
 *)
 
+[<Measure>] type seconds
+[<Measure>] type microseconds
+[<Measure>] type milliseconds
+[<Measure>] type nanoseconds
+
     
