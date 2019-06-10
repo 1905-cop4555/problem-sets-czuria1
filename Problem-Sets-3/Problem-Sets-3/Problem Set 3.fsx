@@ -339,4 +339,6 @@ let convertSecToNano s =
     nano * s
 
 let sec1 = convertSecToMicro 5.0<seconds>
+let sec2 = convertSecToMilli 5.0<seconds>
+let sec3 = convertSecToNano 5.0<seconds>
     
