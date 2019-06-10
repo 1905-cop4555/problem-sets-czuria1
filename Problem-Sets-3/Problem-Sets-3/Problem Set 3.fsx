@@ -142,7 +142,7 @@ interleave ([1;2;3],[4;5;6])
 
 let series n = seq { for a in 1 .. n do yield (pown -1 (a+1))*(pown 2 a)}
 
-let seq1 = series 5
+let seq1 = series 7
 
 printfn "%A" seq1
 
@@ -202,16 +202,22 @@ power 4I
 *)
 
 let fib n =
-    let fib1 = 1
-    let fib2 = 1
-    let fibNum = fib1
-    for i = 1 to n do 
-        fibNum = fib1 + fib2
-        fib1 = fib2
-        fib2 = fibNum
-    fibNum 
+    let fib1 = ref 0
+    let fib2 = ref 1
+    let sum = ref 0
+    let cnt = ref n
+    while !cnt > 1 do 
+        sum := !fib1 + !fib2
+        fib1 := !fib2
+        fib2 := !sum
+        cnt := !cnt - 1
+    !sum
 
-fib 5 
+fib 5
+
+fib 6
+
+fib 7
 
 (* Problem 16 *)
 
