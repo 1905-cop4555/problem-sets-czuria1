@@ -219,9 +219,9 @@ power 4I
     let thrice f = f << f << f
     Can you predicte the output of
 
-    thrice thrice successor 0
-    twice thrice successor 0
-    thrice twice successor 0
+    thrice thrice successor 0 => 27
+    twice thrice successor 0 => 9
+    thrice twice successor 0 => 8
 *)
 
 //let twice f = (fun x -> f (f x))
