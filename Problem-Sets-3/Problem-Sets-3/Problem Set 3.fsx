@@ -338,7 +338,17 @@ let convertSecToMilli s =
 let convertSecToNano s = 
     nano * s
 
-let sec1 = convertSecToMicro 5.0<seconds>
-let sec2 = convertSecToMilli 5.0<seconds>
-let sec3 = convertSecToNano 5.0<seconds>
+//let sec1 = convertSecToMicro 5.0<seconds>
+//let sec2 = convertSecToMilli 5.0<seconds>
+//let sec3 = convertSecToNano 5.0<seconds>
+
+let convertMilliToSec m = 
+    m / milli
+
+let convertMicroToNano m = 
+    m * 1000.0<microseconds/nanoseconds>
+
+let sec4 = convertMilliToSec 5000.0 |> convertSecToMicro
+
+let sec5 = convertSecToMicro 0.00000009 |> convertMicroToNano
     
