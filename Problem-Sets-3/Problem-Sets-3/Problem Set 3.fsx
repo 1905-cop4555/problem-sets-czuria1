@@ -230,7 +230,13 @@ let twice f = f << f
 
 let successor n = n+1
 
-(twice (twice (twice (twice successor)))) 0
+//(twice (twice (twice (twice successor)))) 0
+
+twice successor 0
+
+let thrice f = f << f << f
+
+thrice successor 0
 
 (*
 10. List the steps that F# follows to determine the type for f: (fun f -> f (f 17.3)).
