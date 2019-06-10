@@ -241,6 +241,12 @@ let s1 =
     pop the values and calculate factorial. Compare the timing with a tail-recursive factorial.
 *)
 
+let stack = 
+    let stk = ref []
+    ((fun x -> stk := x :: (!stk)), // push
+    (fun () -> stk := List.tail (!stk)), // pop
+    (fun () -> List.head (!stk))) // top
+
 (* Problem 16 *)
 
     
