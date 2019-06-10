@@ -325,4 +325,8 @@ let stack1 = mkstack [1]
 [<Measure>] type milliseconds
 [<Measure>] type nanoseconds
 
+let micro = 0.000001<seconds>
+let milli = 0.001<seconds>
+let nano = 0.000000001<seconds>
+
     
