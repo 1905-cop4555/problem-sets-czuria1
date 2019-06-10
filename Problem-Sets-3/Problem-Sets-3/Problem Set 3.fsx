@@ -245,7 +245,8 @@ let stack =
     let stk = ref []
     ((fun x -> stk := x :: (!stk)), // push
     (fun () -> stk := List.tail (!stk)), // pop
-    (fun () -> List.head (!stk))) // top
+    (fun () -> List.head (!stk)), // top
+    (fun () -> List.isEmpty (!stk))) // isEmpty
 
 (* Problem 16 *)
 
