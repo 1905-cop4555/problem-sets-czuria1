@@ -219,6 +219,12 @@ fib 6
 
 fib 7
 
+(*
+12. Using imperative F#, create a record type for a student. The record will have a function that returns the student's 
+GPA, a function that adds credit hours and a function that adds grade points. Initialize an instance of the record with 
+appropriate functions and values. Use the instance to add grade points and credits several times, and display the GPA.
+*)
+
 (* Problem 16 *)
 
     
