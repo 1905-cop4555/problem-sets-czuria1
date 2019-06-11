@@ -203,7 +203,7 @@ let numbers = take 6 (filter (fun n l -> n%l = 0) list nats)
 let power n =
     let rec loop a = function 
         | 0 -> a
-        | n -> loop (2I*n) (a-1I)
+        | n -> loop (2I**n) (a - 1)
     loop 1I n
 
 power 2I
