@@ -18,6 +18,8 @@ let rec interp = function
     | (SUCC, v)     -> ERROR (sprintf "'succ' needs int argument, not '%A'" v)
     | (PRED, NUM n) -> if n = 0 then NUM 0 else NUM (n-1)
     | (PRED, v)     -> ERROR (sprintf "'pred' needs int argument, not '%A'" v)
+    | (ISZERO, NUM n) -> if n = 0 then BOOL true else BOOL false
+    | (ISZERO, v)     -> ERROR (sprintf "'iszero' needs int argument, not '%A'" v)
 
 // Here are two convenient abbreviations for using your interpreter.
 let interpfile filename = filename |> parsefile |> interp
