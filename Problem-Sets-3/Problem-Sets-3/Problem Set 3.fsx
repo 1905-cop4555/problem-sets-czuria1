@@ -129,16 +129,15 @@ let rec nonTailInterleave = function
     | [], ys -> ys
     | x::xs, y::ys -> x::y::nonTailInterleave(xs,ys)
 
-let interleave xs ys = 
-    let rec aux xs ys a = 
-        match xs, ys with 
-        | [], [] -> a
-        | x::xs, [] -> 
-        | [], ys -> ys
-        | x::xs, y::ys ->
+let rec interleave x y a = 
+    match x, y with 
+    | [], [] -> a
+    | _, [] -> failwith "Different lengths"
+    | [], _ -> failwith "Different lengths"
+    | x::xs, y::ys -> x::y::interleave xs ys a
 
 
-interleave ([1;2;3],[4;5;6])
+interleave [1;2;3] [4;5;6] []
 
 (*
 6. Alternating series
