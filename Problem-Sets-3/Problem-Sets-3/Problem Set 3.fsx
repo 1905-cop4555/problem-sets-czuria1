@@ -81,8 +81,9 @@ let rec S = function
     | [] -> failwith "premature termination of input"
     | x::xs ->
         match x with
-        | A -> xs
-        | B -> xs
+        | A -> xs |> S
+        | B -> xs |> S
+        | I -> xs
         | _ -> failwith (sprintf "S: got %A" x)
 
 let accept() = printfn("Input accepted")
@@ -93,6 +94,8 @@ let test_program program =
           match result with 
           | [] -> failwith "Early termination or missing EOF"
           | x::xs -> if x = EOF then accept() else error()
+
+test_program [A;I;A;EOF]
 
 (*
 4. Using the natural semantics from the lecture notes, show all the steps for verifying each judgement. 
