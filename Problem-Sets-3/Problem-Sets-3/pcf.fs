@@ -20,6 +20,17 @@ let rec interp = function
     | (PRED, v)     -> ERROR (sprintf "'pred' needs int argument, not '%A'" v)
     | (ISZERO, NUM n) -> if n = 0 then BOOL true else BOOL false
     | (ISZERO, v)     -> ERROR (sprintf "'iszero' needs int argument, not '%A'" v)
+| BOOL b    -> BOOL b
+| NUM n     -> NUM n
+| SUCC      -> SUCC
+| PRED      -> PRED
+| ISZERO    -> ISZERO
+| IF (e1, e2, e3)   ->
+    match interp e1 with 
+    | BOOL true -> interp e2
+    | BOOL false -> interp e3
+    | _ -> ERROR (sprintf "'if' needs a condition")
+| _ -> ERROR (sprintf "Invalid input")
 
 // Here are two convenient abbreviations for using your interpreter.
 let interpfile filename = filename |> parsefile |> interp
