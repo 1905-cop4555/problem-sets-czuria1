@@ -6,6 +6,12 @@
 let main argv = 
     printfn "%A" argv
 
-    Interp.result()
+    Interp.p1()
+    Interp.p2()
+    Interp.p3()
+    Interp.p4()
+    Interp.p5()
+    Interp.p6()
+    Interp.p7()
 
     0 // return an integer exit code

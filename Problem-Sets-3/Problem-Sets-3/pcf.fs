@@ -37,7 +37,37 @@ let interpfile filename = filename |> parsefile |> interp
 
 let interpstr sourcecode = sourcecode |> parsestr |> interp
 
-let result() =
+let p1() =
     let term = interpstr "succ 0"
+    printfn "%A" term
+    ()
+
+let p2() =
+    let term = interpstr "succ 1"
+    printfn "%A" term
+    ()
+
+let p3() =
+    let term = interpstr "pred 10"
+    printfn "%A" term
+    ()
+
+let p4() =
+    let term = interpstr "succ (succ (succ 0))"
+    printfn "%A" term
+    ()
+
+let p5() =
+    let term = interpstr "iszero succ"
+    printfn "%A" term
+    ()
+
+let p6() =
+    let term = interpstr "succ pred 7"
+    printfn "%A" term
+    ()
+
+let p7() =
+    let term = interpstr "succ (pred 7)"
     printfn "%A" term
     ()
