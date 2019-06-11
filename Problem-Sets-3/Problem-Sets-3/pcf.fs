@@ -25,3 +25,8 @@ let rec interp = function
 let interpfile filename = filename |> parsefile |> interp
 
 let interpstr sourcecode = sourcecode |> parsestr |> interp
+
+let result() =
+    let term = interpstr "succ 0"
+    printfn "%A" term
+    ()

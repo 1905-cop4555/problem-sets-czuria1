@@ -1,6 +1,7 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29009.5
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Problem-Sets-3", "Problem-Sets-3\Problem-Sets-3.fsproj", "{49C7C901-1390-4A29-88CD-8EDB31AE4080}"
 EndProject
 Global
@@ -13,5 +14,11 @@ Global
 		{49C7C901-1390-4A29-88CD-8EDB31AE4080}.Debug|x86.Build.0 = Debug|x86
 		{49C7C901-1390-4A29-88CD-8EDB31AE4080}.Release|x86.ActiveCfg = Release|x86
 		{49C7C901-1390-4A29-88CD-8EDB31AE4080}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {424FA896-3B22-4374-BB73-69FEE39EA0AB}
 	EndGlobalSection
 EndGlobal

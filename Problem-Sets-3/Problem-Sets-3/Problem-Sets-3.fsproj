@@ -21,7 +21,8 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <Optimize>true</Optimize>
     <OutputPath>bin\Release</OutputPath>
-    <DefineConstants></DefineConstants>
+    <DefineConstants>
+    </DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <ExternalConsole>true</ExternalConsole>
     <GenerateTailCalls>true</GenerateTailCalls>
@@ -44,11 +45,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
-    <Compile Include="Program.fs" />
     <None Include="packages.config" />
     <None Include="Problem Set 3.fsx" />
-    <None Include="parser.fsx" />
-    <None Include="pcf.fsx" />
+    <Compile Include="parser.fs" />
+    <Compile Include="pcf.fs" />
+    <Compile Include="Program.fs" />
   </ItemGroup>
   <Import Project="$(FSharpTargetsPath)" />
 </Project>

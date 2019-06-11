@@ -1,6 +1,11 @@
-﻿// Learn more about F# at http://fsharp.org
+﻿module Program
+// Learn more about F# at http://fsharp.org
 // See the 'F# Tutorial' project for more help.
+
 [<EntryPoint>]
-let main argv =
+let main argv = 
     printfn "%A" argv
+
+    Interp.result()
+
     0 // return an integer exit code
