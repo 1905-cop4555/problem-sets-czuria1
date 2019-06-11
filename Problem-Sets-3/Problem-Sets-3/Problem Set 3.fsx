@@ -68,7 +68,7 @@ let rec convert = function
     S → aSa | bSb | "|"
 *)
 
-type TERMINAL = A|B
+type TERMINAL = A|B|I|EOF
 
 let eat token = function
     | [] -> failwith "premature termination of input"
@@ -84,6 +84,15 @@ let rec S = function
         | A -> xs
         | B -> xs
         | _ -> failwith (sprintf "S: got %A" x)
+
+let accept() = printfn("Input accepted")
+let error() = printfn("Input error")
+
+let test_program program =
+          let result = program |> S
+          match result with 
+          | [] -> failwith "Early termination or missing EOF"
+          | x::xs -> if x = EOF then accept() else error()
 
 (*
 4. Using the natural semantics from the lecture notes, show all the steps for verifying each judgement. 
