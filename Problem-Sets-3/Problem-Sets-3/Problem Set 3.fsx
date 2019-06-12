@@ -294,12 +294,18 @@ fib 7
 type Student = {gpa: unit -> float; credits: float -> unit; grade: float -> unit}
 
 let s1 =
-    let cred = ref 4.00
+    let cred = ref 0.0
     let pts = ref 0.0
-    let avg = ref 4.00
-    {gpa = fun () -> !avg; credits = fun c -> cred := !cred + c; grade = fun p -> pts := !pts + p}
+    let avg = ref ((!cred*(!pts))/(!cred))
+    {
+    gpa = fun () -> !avg; 
+    credits = fun c -> cred := !cred + c; 
+    grade = fun p -> pts := !pts + p
+    }
 
-//s1.gpa ()
+s1.grade 4.0
+s1.credits 3.0
+s1.gpa ()
 
 (*
 13. Using imperative F#, create a tuple for an integer stack, including push, pop, top and isEmpty functions. Use the 
