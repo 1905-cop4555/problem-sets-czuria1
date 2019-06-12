@@ -32,6 +32,14 @@ let rec interp = function
     | _ -> ERROR (sprintf "'if' needs a condition")
 | _ -> ERROR (sprintf "Invalid input")
 
+let subst e x t = 
+    match e with 
+    | NUM n -> NUM n
+    | BOOL b ->  BOOL b
+    | SUCC -> SUCC
+    | PRED -> PRED
+    | ISZERO -> ISZERO
+
 // Here are two convenient abbreviations for using your interpreter.
 let interpfile filename = filename |> parsefile |> interp
 
