@@ -1,0 +1,5 @@
+﻿if iszero 5 then 
+	pred (pred 5) 
+else 
+	succ (succ 6)
+
