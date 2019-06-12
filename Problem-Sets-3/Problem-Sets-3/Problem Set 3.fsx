@@ -297,12 +297,14 @@ let s1 =
     let cred = ref 0.0
     let pts = ref 0.0
     {
-    gpa = fun () -> ((!cred*(!pts))/(!cred)); 
+    gpa = fun () -> (((!cred)*(!pts))/(!cred)); 
     credits = fun c -> cred := !cred + c; 
     grade = fun p -> pts := !pts + p
     }
 
 s1.grade 4.0
+s1.credits 3.0
+s1.grade 3.7
 s1.credits 3.0
 s1.gpa ()
 
@@ -327,7 +329,7 @@ let stack1 = mkstack [1]
     { int *x;
       int a[15];
 
-      *x = 7;
+      *x = 7;           => can't set an int to a pointer
       a[*x] = *x + 4;
     }
 *)
