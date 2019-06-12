@@ -296,9 +296,8 @@ type Student = {gpa: unit -> float; credits: float -> unit; grade: float -> unit
 let s1 =
     let cred = ref 0.0
     let pts = ref 0.0
-    let avg = ref ((!cred*(!pts))/(!cred))
     {
-    gpa = fun () -> !avg; 
+    gpa = fun () -> ((!cred*(!pts))/(!cred)); 
     credits = fun c -> cred := !cred + c; 
     grade = fun p -> pts := !pts + p
     }
