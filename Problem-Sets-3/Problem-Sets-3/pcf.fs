@@ -41,7 +41,8 @@ let rec subst e x t =
     | ISZERO -> ISZERO
     | APP (e1, e2) ->
         match (subst e1 x t, subst e2 x t) with
-        |
+        | (v, ID i) -> if i = x then APP (v, t) else APP (v, ID i)
+        | (v, y) -> APP (v, y)
     | ID i -> if i = x then t else ID i
     | IF (e1, e2, e3) -> IF (subst e1 x t, subst e2 x t, subst e3 x t)
     | FUN (s, e1) -> FUN (s, subst e1 x t)
