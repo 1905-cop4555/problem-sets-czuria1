@@ -201,12 +201,16 @@ let numbers = take 6 (filter (fun n l -> n%l = 0) list nats)
 *)
 
 let power n =
-    let rec loop a = function 
-        | 0 -> a
-        | n -> loop (2I**n) (a - 1I)
+    let rec loop a n =
+        match n with 
+        | n when n = 0I -> a
+        | n when n = 1I -> 2I
+        | n -> loop (a + (2I*2I)) (n - 1I)
     loop 1I n
 
-power 0I
+//power 0I
+
+//power 1I
 
 power 4I
 
