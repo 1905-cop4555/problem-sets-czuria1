@@ -71,3 +71,8 @@ let p7() =
     let term = interpstr "succ (pred 7)"
     printfn "%A" term
     ()
+
+let p8() =
+    let prg = interpfile "if.txt"
+    printfn "%A" prg
+    ()

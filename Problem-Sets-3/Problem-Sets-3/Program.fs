@@ -13,5 +13,6 @@ let main argv =
     Interp.p5()
     Interp.p6()
     Interp.p7()
+    Interp.p8()
 
     0 // return an integer exit code
