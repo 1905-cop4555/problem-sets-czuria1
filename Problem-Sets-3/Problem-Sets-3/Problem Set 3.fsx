@@ -336,6 +336,22 @@ let stack1 = mkstack [1]
       *x = 7;           => can't set an int to a pointer
       a[*x] = *x + 4;
     }
+
+    derivation for *x on left               derivation for 7
+    -------------------------               -------------------------
+
+
+    E(x) = int* var
+    ------------------------- (ID)
+    E |- x : int* var                   
+    ------------------------- (R-VAL)       
+    E |- x : int*                                
+    ------------------------- (L-VAL)       ------------------------- (ID)
+    E |- *x : int var                       E |- x : int              (LIT)
+    ---------------------------------------------------- (ASSIGN)
+    error
+
+
 *)
 
 (* Problem 16 *)
