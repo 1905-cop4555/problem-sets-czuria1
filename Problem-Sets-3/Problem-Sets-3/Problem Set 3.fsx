@@ -414,7 +414,30 @@ let stack1 = mkstack [1]
 
 *)
 
-(* Problem 16 *)
+(*
+15. An interesting use of first-class functions and ref cells in F# is to create a monitored version of a function:
+    > let makeMonitoredFun f =
+          let c = ref 0
+          (fun x -> c := !c+1; printf "Called %d times.\n" !c; f x);;
+
+      val makeMonitoredFun : ('a -> 'b) -> ('a -> 'b)
+
+    > let msqrt = makeMonitoredFun sqrt;;
+      val msqrt : (float -> float)
+
+    > msqrt 16.0 + msqrt 25.0;;
+      Called 1 times.
+      Called 2 times.
+      val it : float = 9.0
+
+    First, explain why F# does not allow the following declaration:
+      let mrev = makeMonitoredFun List.rev
+    Now suppose we rewrite the declaration using the technique of eta expansion:
+      let mrev = fun x -> (makeMonitoredFun List.rev) x
+    Does this solve the problem? Explain why or why not.
+*)
+
+(* Problem 16 on pcf.fs file*)
 
 (*
 18. Measures
