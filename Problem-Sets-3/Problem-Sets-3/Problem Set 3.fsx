@@ -435,6 +435,13 @@ let stack1 = mkstack [1]
     Now suppose we rewrite the declaration using the technique of eta expansion:
       let mrev = fun x -> (makeMonitoredFun List.rev) x
     Does this solve the problem? Explain why or why not.
+
+    F# does now allow mrev's declaration because of F#'s value restriction. Because List.rev is not a syntactic value, 
+    then it cannot be given a polymorphic since F# can't tell what type List.rev should be.
+
+    The rewritten declaration of the function using eta expansion solves the value restriction issue because it now
+    knows that it is a polymorphic list by changing its definition, giving it a syntactic value.
+
 *)
 
 (* Problem 16 on pcf.fs file*)
