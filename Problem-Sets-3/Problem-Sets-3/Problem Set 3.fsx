@@ -193,14 +193,21 @@ let rec filter p (Cons(x, xsf)) =
 
 let list = [2;3;21;10]
 
-let rec traverse l = 
-    match l with 
-    | [] -> ()
-    | x::xs -> 
-        printfn "%d" x
-        traverse xs
+let rec gcd a b =
+    if b = 0 then abs a
+    else gcd b (a % b)
 
-traverse list
+let lcm (a,b) = a * b / (gcd a b)
+
+let rec traverse = function
+    | [] -> 1
+    | [x] -> x
+    | [x;y] -> lcm (x,y)
+    | x::xs -> lcm (x, traverse xs)
+
+let multiple = traverse list
+
+let newList n l = l |> List.map (fun x -> x*n)
 
 let numbers = take 6 (filter (fun n -> n%2 = 0) nats)
 
