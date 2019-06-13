@@ -72,18 +72,8 @@ type token = ATOK | BTOK | LINETOK | EOF
 
 let explode (s : string) = [for c in s do yield c]
 
-let isNotWhite c = c <> ' ' || c <> '\n' || c <> '\r' || c <> '\t'
-
-let isAlpha c = ('a' <= c && c <= 'z')
-
-//let keyword = function
-//| "a"   -> ATOK
-//| "b"  -> BTOK
-//| "|"   -> LINETOK
-
 let rec gettok = function
 | [] -> (EOF, [])
-| c :: cs when isNotWhite c -> gettok cs
 | 'a' :: cs -> (ATOK, cs)
 | 'b' :: cs -> (BTOK, cs)
 | '|' :: cs -> (LINETOK, cs)
@@ -98,7 +88,7 @@ let tokenize cs =
 
 let lexstr sourcecode = sourcecode |> explode |> tokenize
 
-lexstr "a|a"
+lexstr "ab|ba"
 
 type TERMINAL = A|B|I|EOF
 
