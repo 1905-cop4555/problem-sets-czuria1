@@ -394,7 +394,7 @@ let stack1 = mkstack [1]
       int a[15];
 
       *x = 7;           
-      a[*x] = *x + 4; => possibly not well-typed
+      a[*x] = *x + 4;
     }
 
     derivation for *x on left               derivation for 7
@@ -411,6 +411,7 @@ let stack1 = mkstack [1]
     ---------------------------------------------------- (ASSIGN)
     *x : int var = 7 : int
 
+    The code is well-typed
 
 *)
 
