@@ -219,6 +219,8 @@ let series = take 6 (filter (fun x -> x%2 = 0) nats)
     d. For both functions, be sure to dislay an appropriate error message if the list does not have exactly four elements.
 *)
 
+type 'a stream = Cons of 'a * (unit -> 'a stream)
+
 let list = [2;3;21;10]
 
 let rec gcd a b =
@@ -227,15 +229,31 @@ let rec gcd a b =
 
 let lcm (a,b) = a * b / (gcd a b)
 
-let rec traverse = function
-    | [] -> 1
-    | [x] -> x
-    | [x;y] -> lcm (x,y)
-    | x::xs -> lcm (x, traverse xs)
-
 let newList n l = l |> List.map (fun x -> x*n)
 
-let numbers = take 6 (filter (fun n -> (traverse (newList n list)%2 = 0)) nats)
+let filterList b n = 
+    let l = newList n b
+    let rec traverse l = 
+        match l with
+        | [] -> 1
+        | [x] -> x
+        | [x;y] -> lcm (x,y)
+        | x::xs -> lcm (x, traverse xs)
+    traverse l
+
+let rec upfrom n = Cons(n, fun () -> upfrom(n+1))
+
+let nats = upfrom 1
+
+let rec take n (Cons(x, xsf)) = 
+    if n = 1 then []
+    else x :: take (n-1) (xsf()) 
+
+let rec filter p (Cons(x, xsf)) = 
+    if p x then Cons(filterList list x, fun () ->  filter p (xsf())) 
+    else filter p (xsf())
+
+let numbers = take 6 (filter (fun n -> n <> 0) nats)
 
 (*
 8. Create a tail-recursive function that has a big integer as input and calculates 2I raised to that power.
