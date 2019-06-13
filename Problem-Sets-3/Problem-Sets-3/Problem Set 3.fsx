@@ -393,8 +393,8 @@ let stack1 = mkstack [1]
     { int *x;
       int a[15];
 
-      *x = 7;           => can't set an int to a pointer
-      a[*x] = *x + 4;
+      *x = 7;           
+      a[*x] = *x + 4; => possibly not well-typed
     }
 
     derivation for *x on left               derivation for 7
@@ -409,7 +409,7 @@ let stack1 = mkstack [1]
     ------------------------- (L-VAL)       ------------------------- (ID)
     E |- *x : int var                       E |- x : int              (LIT)
     ---------------------------------------------------- (ASSIGN)
-    error
+    *x : int var = 7 : int
 
 
 *)
