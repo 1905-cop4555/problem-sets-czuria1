@@ -1,0 +1,10 @@
+﻿if iszero (pred 1) then
+   if iszero (pred 1) then
+      1
+   else 
+      2
+else
+   if iszero (pred 1) then
+      3
+   else 
+      4 

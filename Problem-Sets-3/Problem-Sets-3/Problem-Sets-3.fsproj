@@ -21,8 +21,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <Optimize>true</Optimize>
     <OutputPath>bin\Release</OutputPath>
-    <DefineConstants>
-    </DefineConstants>
+    <DefineConstants></DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <ExternalConsole>true</ExternalConsole>
     <GenerateTailCalls>true</GenerateTailCalls>
@@ -42,6 +41,10 @@
     <Compile Include="parser.fs" />
     <Compile Include="pcf.fs" />
     <Content Include="if.txt" />
+    <None Include="complex1.txt" />
+    <None Include="complex2.txt" />
+    <None Include="complex3.txt" />
+    <None Include="complex4.txt" />
     <Compile Include="Program.fs" />
   </ItemGroup>
   <ItemGroup>
