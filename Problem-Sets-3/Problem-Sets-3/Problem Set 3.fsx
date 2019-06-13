@@ -105,15 +105,6 @@ let parse toks =
 
 let parsestr sourcecode = sourcecode |> lexstr |> parse
 
-parsestr "a|a"
-
-let eat token = function
-    | [] -> failwith "premature termination of input"
-    | x::xs ->
-        if x = token
-        then xs
-        else failwith (sprintf "want %A, got %A" token x)
-
 let rec S = function
     | [] -> failwith "premature termination of input"
     | x::xs ->
@@ -131,8 +122,6 @@ let test_program program =
           match result with 
           | [] -> failwith "Early termination or missing EOF"
           | x::xs -> if x = EOF then accept() else error()
-
-test_program [A;I;A;EOF]
 
 (*
 4. Using the natural semantics from the lecture notes, show all the steps for verifying each judgement. 
@@ -202,18 +191,6 @@ let seqInfinite = Seq.initInfinite (fun index ->
 
 printfn "%A" seqInfinite
 
-(*
-7. Multiples of a list
-    a. Generate an infinite stream for the the natural numbers greater than zero that are divisible by each element in a 
-    list of four elements. Use four, nested calls of filter on the infinite stream of natural numbers starting at one. 
-    For example the output for the list [2;3;21;10]:
-    210, 420, 630, 840, 1050, ...
-    b. Display the 20th through 30th numbers in the series.
-    c. Repeat the exercise using an infinite sequence. Sequences also have a filter function, so it can be solved similarly 
-    to the infinite stream version. Just for fun, try to solve it without using the filter function.
-    d. For both functions, be sure to dislay an appropriate error message if the list does not have exactly four elements.
-*)
-
 type 'a stream = Cons of 'a * (unit -> 'a stream)
 
 let rec upfrom n = Cons(n, fun () -> upfrom(n+1))
@@ -227,6 +204,20 @@ let rec take n (Cons(x, xsf)) =
 let rec filter p (Cons(x, xsf)) = 
     if p x then Cons(x, fun () ->  filter p (xsf())) 
     else filter p (xsf())
+
+let series = take 6 (filter (fun x -> x%2 = 0) nats)
+
+(*
+7. Multiples of a list
+    a. Generate an infinite stream for the the natural numbers greater than zero that are divisible by each element in a 
+    list of four elements. Use four, nested calls of filter on the infinite stream of natural numbers starting at one. 
+    For example the output for the list [2;3;21;10]:
+    210, 420, 630, 840, 1050, ...
+    b. Display the 20th through 30th numbers in the series.
+    c. Repeat the exercise using an infinite sequence. Sequences also have a filter function, so it can be solved similarly 
+    to the infinite stream version. Just for fun, try to solve it without using the filter function.
+    d. For both functions, be sure to dislay an appropriate error message if the list does not have exactly four elements.
+*)
 
 let list = [2;3;21;10]
 
