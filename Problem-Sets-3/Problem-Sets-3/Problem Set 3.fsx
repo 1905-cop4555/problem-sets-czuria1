@@ -68,6 +68,38 @@ let rec convert = function
     S → aSa | bSb | "|"
 *)
 
+type token = ATOK | BTOK | LINETOK | EOF
+
+let explode (s : string) = [for c in s do yield c]
+
+let isNotWhite c = c <> ' ' || c <> '\n' || c <> '\r' || c <> '\t'
+
+let isAlpha c = ('a' <= c && c <= 'z')
+
+//let keyword = function
+//| "a"   -> ATOK
+//| "b"  -> BTOK
+//| "|"   -> LINETOK
+
+let rec gettok = function
+| [] -> (EOF, [])
+| c :: cs when isNotWhite c -> gettok cs
+| 'a' :: cs -> (ATOK, cs)
+| 'b' :: cs -> (BTOK, cs)
+| '|' :: cs -> (LINETOK, cs)
+| c :: cs -> (printf "Skipping illegal character: '%c'\n" c; gettok cs)
+
+let tokenize cs =
+    let rec gettoks toks cs =
+      match gettok cs with
+      | (EOF, cs) -> List.rev (EOF::toks)
+      | (tok, cs) -> gettoks (tok::toks) cs
+    gettoks [] cs
+
+let lexstr sourcecode = sourcecode |> explode |> tokenize
+
+lexstr "a|a"
+
 type TERMINAL = A|B|I|EOF
 
 let eat token = function
@@ -205,11 +237,9 @@ let rec traverse = function
     | [x;y] -> lcm (x,y)
     | x::xs -> lcm (x, traverse xs)
 
-let multiple = traverse list
-
 let newList n l = l |> List.map (fun x -> x*n)
 
-let numbers = take 6 (filter (fun n -> n%2 = 0) nats)
+let numbers = take 6 (filter (fun n -> (traverse (newList n list)%2 = 0)) nats)
 
 (*
 8. Create a tail-recursive function that has a big integer as input and calculates 2I raised to that power.
