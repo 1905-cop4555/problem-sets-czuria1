@@ -93,6 +93,9 @@ let rec W (env, e) =
       let (s4, t3) = W (s3 << s2 << s1 << env, e3)
       let s5 = unify (s4 t2, t3)
       (s5 << s4 << s3 << s2 << s1, s5 t3)
+  | SUCC -> (I, INTEGER)
+  | PRED -> (I, INTEGER)
+
   
 /// infer e finds the principal type of e
 let infer e =
