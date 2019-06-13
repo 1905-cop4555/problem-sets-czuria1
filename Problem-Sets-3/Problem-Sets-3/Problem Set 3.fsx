@@ -3,9 +3,9 @@
     a. Create a discriminated union that can represent a linked list of integers.
     b. Write a function that converts a list into a linked list of nodes.
 *)
-type tree = 
+type linkedList = 
     | Empty 
-    | Cons of head:int * tail:tree
+    | Cons of head:int * tail:linkedList
 
 let rec convert = function
     | [] -> Empty
@@ -193,7 +193,7 @@ let rec filter p (h::hs) (Cons(x, xsf)) =
 
 let list = [2;3;21;10]
 
-let numbers = take 6 (filter (fun n l -> n%l = 0) list nats)
+let numbers = take 6 (filter (fun n l -> n=l) list nats)
 
 (*
 8. Create a tail-recursive function that has a big integer as input and calculates 2I raised to that power.
