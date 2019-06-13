@@ -187,13 +187,22 @@ let rec take n (Cons(x, xsf)) =
     if n = 1 then []
     else x :: take (n-1) (xsf()) 
 
-let rec filter p (h::hs) (Cons(x, xsf)) = 
-    if p h x then Cons(x, fun () ->  filter p hs (xsf())) 
-    else filter p hs (xsf())
+let rec filter p (Cons(x, xsf)) = 
+    if p x then Cons(x, fun () ->  filter p (xsf())) 
+    else filter p (xsf())
 
 let list = [2;3;21;10]
 
-let numbers = take 6 (filter (fun n l -> n=l) list nats)
+let rec traverse l = 
+    match l with 
+    | [] -> ()
+    | x::xs -> 
+        printfn "%d" x
+        traverse xs
+
+traverse list
+
+let numbers = take 6 (filter (fun n -> n%2 = 0) nats)
 
 (*
 8. Create a tail-recursive function that has a big integer as input and calculates 2I raised to that power.
