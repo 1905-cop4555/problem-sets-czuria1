@@ -159,11 +159,11 @@ interleave [1;2;3] [4;5;6] []
    c. Repeat the exercise using an infinite stream.
 *)
 
-let series n = seq { for a in 1 .. n do yield (pown -1 (a+1))*(pown 2 a)}
+let seqInfinite = Seq.initInfinite (fun index ->
+    let n = float(index + 1)
+    1.0 / ((2.0**n) * (if ((index + 1) % 2 = 0) then -1.0 else 1.0)))
 
-let seq1 = series 7
-
-printfn "%A" seq1
+printfn "%A" seqInfinite
 
 (*
 7. Multiples of a list
