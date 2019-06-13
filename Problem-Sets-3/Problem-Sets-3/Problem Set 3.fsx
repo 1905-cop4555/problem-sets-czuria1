@@ -88,9 +88,24 @@ let tokenize cs =
 
 let lexstr sourcecode = sourcecode |> explode |> tokenize
 
-lexstr "ab|ba"
+type TERMINAL = A | B | I | ERROR of string
 
-type TERMINAL = A|B|I|EOF
+let rec parseExp = function
+  | ATOK :: toks   -> (A, toks)
+  | BTOK :: toks   -> (B, toks)
+  | LINETOK :: toks   -> (I, toks)
+  | [] -> (ERROR "Lexer error: missing EOF token", [EOF])
+
+let parse toks =
+    match parseExp toks with
+    | (ERROR s, toks1) -> ERROR s
+    | (term1, EOF :: toks1) -> term1
+    | (term1, tok1 :: toks1) -> ERROR (sprintf "EOF expected, found %A" tok1)
+    | (term1, []) -> ERROR "Lexer error: missing EOF token"
+
+let parsestr sourcecode = sourcecode |> lexstr |> parse
+
+parsestr "a|a"
 
 let eat token = function
     | [] -> failwith "premature termination of input"
