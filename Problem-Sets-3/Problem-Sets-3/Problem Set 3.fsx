@@ -193,16 +193,16 @@ printfn "%A" seqInfinite
 
 type 'a stream = Cons of 'a * (unit -> 'a stream)
 
-let rec upfrom n = Cons(n, fun () -> upfrom(n+1))
+let rec upfrom n = Cons(n, fun () -> upfrom(n+1.0))
 
-let nats = upfrom 1
+let nats = upfrom 1.0
 
 let rec take n (Cons(x, xsf)) = 
     if n = 1 then []
     else x :: take (n-1) (xsf()) 
 
 let rec filter p (Cons(x, xsf)) = 
-    if p x then Cons(x, fun () ->  filter p (xsf())) 
+    if p x then Cons(if ((x+1.0) % 2.0 = 0.0) then (-1.0 * x) else x, fun () ->  filter p (xsf())) 
     else filter p (xsf())
 
 let series = take 6 (filter (fun x -> x%2 = 0) nats)
