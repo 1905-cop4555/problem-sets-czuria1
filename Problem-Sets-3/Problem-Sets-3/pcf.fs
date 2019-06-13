@@ -46,6 +46,7 @@ let rec subst e x t =
     | ID i -> if i = x then t else ID i
     | IF (e1, e2, e3) -> IF (subst e1 x t, subst e2 x t, subst e3 x t)
     | FUN (s, e1) -> FUN (s, subst e1 x t)
+    | REC (s, e1) -> REC (s, subst e1 x t)
 
 // Here are two convenient abbreviations for using your interpreter.
 let interpfile filename = filename |> parsefile |> interp
