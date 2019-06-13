@@ -45,6 +45,7 @@
     <None Include="complex2.txt" />
     <None Include="complex3.txt" />
     <None Include="complex4.txt" />
+    <Compile Include="type.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
   <ItemGroup>
